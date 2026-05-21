@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cafe Bengaluru
+
+A modern web application for Cafe Bengaluru, showcasing the cafe's offerings, menu, and services. Built with [Next.js](https://nextjs.org) for optimal performance and user experience.
 
 ## Getting Started
 
