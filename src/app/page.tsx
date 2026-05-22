@@ -1,205 +1,44 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Custom Cursor logic
-    const cursor = document.getElementById('custom-cursor');
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      if (cursor) {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-      }
-    };
-
-    // Toggle active cursor state on hoverable elements
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-      
-      const isHoverable = 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON' || 
-        target.closest('a') || 
-        target.closest('button') || 
-        target.classList.contains('hover-target') ||
-        target.closest('.hover-target');
-
-      if (isHoverable) {
-        document.body.classList.add('hover-active');
-      } else {
-        document.body.classList.remove('hover-active');
-      }
-    };
-
-    const handleMouseLeave = () => {
-      document.body.classList.remove('hover-active');
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    // Intersection Observer for scroll animations (fade-up-stagger)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      }
-    );
-
-    const staggerElements = document.querySelectorAll('.fade-up-stagger');
-    staggerElements.forEach((el) => observer.observe(el));
-
-    // Parallax scrolling effect using requestAnimationFrame
-    let tick = false;
-    const handleScroll = () => {
-      if (!tick) {
-        window.requestAnimationFrame(() => {
-          const scrolled = window.scrollY;
-          const layers = document.querySelectorAll('.parallax-layer');
-          layers.forEach((layer) => {
-            const speedAttr = layer.getAttribute('data-speed');
-            if (speedAttr) {
-              const speed = parseFloat(speedAttr);
-              // Safe cast to HTMLElement to modify transform
-              (layer as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`;
-            }
-          });
-          tick = false;
-        });
-        tick = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('scroll', handleScroll);
-      staggerElements.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
+  const { scrollY } = useScroll();
+  
+  // Parallax layers
+  const heroBgY = useTransform(scrollY, [0, 1000], [0, 200]);
+  const floatFrontY = useTransform(scrollY, [0, 1000], [0, 600]);
+  const heroTextY = useTransform(scrollY, [0, 1000], [0, 250]);
 
   return (
     <>
-      {/* Custom cursor element */}
-      <div id="custom-cursor" className="hidden lg:block"></div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.05)] hover-target">
-        <div className="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
-          <a className="flex-shrink-0 hover-target" href="#">
-            <img
-              alt="Cafe Bengaluru"
-              className="h-[60px] w-auto object-contain mix-blend-multiply"
-              src="/images/logo.png"
-            />
-          </a>
-          
-          <div className="hidden md:flex gap-lg items-center">
-            <a className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest hover-target" href="#story">
-              Our Story
-            </a>
-            <a className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest hover-target" href="#menu">
-              Menu
-            </a>
-            <a className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest hover-target" href="#vibe">
-              Vibe
-            </a>
-            <a className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest hover-target" href="#visit">
-              Visit Us
-            </a>
-          </div>
-
-          <a className="hidden md:inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-secondary to-tertiary text-white hover:from-tertiary hover:to-secondary transition-all duration-500 font-label-md text-label-md uppercase tracking-widest shadow-md hover:shadow-lg hover-target" href="#order">
-            Order Online
-          </a>
-
-          <button 
-            className="md:hidden text-primary p-2 hover-target focus:outline-none"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <span className="material-symbols-outlined text-[28px]">
-              {isMobileMenuOpen ? 'close' : 'menu'}
-            </span>
-          </button>
-        </div>
-
-        {/* Mobile Navigation Drawer */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-2xl border-b border-[#faf9f6]/20 transition-all duration-300">
-            <div className="flex flex-col gap-6 px-lg py-xl items-center text-center">
-              <a 
-                className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest w-full py-2" 
-                href="#story"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Our Story
-              </a>
-              <a 
-                className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest w-full py-2" 
-                href="#menu"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Menu
-              </a>
-              <a 
-                className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest w-full py-2" 
-                href="#vibe"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Vibe
-              </a>
-              <a 
-                className="text-on-surface hover:text-secondary transition-colors duration-300 font-label-md text-label-md uppercase tracking-widest w-full py-2" 
-                href="#visit"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Visit Us
-              </a>
-              <a 
-                className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-gradient-to-r from-secondary to-tertiary text-white w-full font-label-md text-label-md uppercase tracking-widest shadow-md" 
-                href="#order"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Order Online
-              </a>
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section */}
-      <header className="relative min-h-[100vh] flex items-center justify-center pt-xl overflow-hidden" id="hero">
-        <div className="absolute inset-0 z-0 parallax-layer" data-speed="0.2">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6]/40 via-transparent to-[#FAF9F6] z-10"></div>
+      <header className="relative min-h-screen flex items-center justify-center pt-xl overflow-hidden" id="hero">
+        <motion.div style={{ y: heroBgY }} className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-linear-to-b from-[#FAF9F6]/40 via-transparent to-[#FAF9F6] z-10"></div>
           <img
             alt="Filter Coffee Pour"
             className="w-full h-full object-cover opacity-80"
             src="/images/hero_coffee.png"
           />
-        </div>
-        <div className="absolute inset-0 z-20 pointer-events-none parallax-layer" data-speed="1.2">
+        </motion.div>
+        <motion.div style={{ y: floatFrontY }} className="absolute inset-0 z-20 pointer-events-none">
           {/* Floating Foreground Elements */}
           <div className="absolute top-[20%] left-[10%] w-16 h-16 bg-secondary/80 rounded-[40%_60%_70%_30%] floating-element" style={{ animationDelay: '0s' }}></div>
           <div className="absolute top-[60%] right-[15%] w-24 h-24 bg-primary/60 rounded-[60%_40%_30%_70%] floating-element" style={{ animationDelay: '1.5s' }}></div>
           <div className="absolute bottom-[10%] left-[25%] w-12 h-12 bg-tertiary-fixed-dim/70 rounded-full floating-element" style={{ animationDelay: '3s', filter: 'blur(4px)' }}></div>
-        </div>
-        <div className="relative z-30 text-center px-gutter max-w-5xl mx-auto fade-up-stagger parallax-layer" data-speed="0.5">
+        </motion.div>
+        <motion.div 
+          style={{ y: heroTextY }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative z-30 text-center px-gutter max-w-5xl mx-auto"
+        >
           <h1 className="font-display-lg text-display-lg text-primary mb-md tracking-tighter leading-[0.9] relative z-40 mix-blend-multiply drop-shadow-sm">
             Namma Bengaluru,<br/>
             <span className="italic text-secondary font-display-lg">Now in Bhubaneswar.</span>
@@ -207,15 +46,21 @@ export default function Home() {
           <p className="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl mx-auto font-light">
             Experience the authentic, unapologetic flavors of South India in a modern, aesthetic setting.
           </p>
-          <a className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-gradient-to-r from-primary to-primary-container text-white hover:scale-105 transition-all duration-500 shadow-[0_10px_30px_rgba(22,68,28,0.3)] font-label-md text-label-md uppercase tracking-widest hover-target" href="#menu">
+          <Link className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-linear-to-r from-primary to-primary-container text-white hover:scale-105 transition-all duration-500 shadow-[0_10px_30px_rgba(22,68,28,0.3)] font-label-md text-label-md uppercase tracking-widest hover-target" href="/menu">
             Explore the Menu
-          </a>
-        </div>
+          </Link>
+        </motion.div>
       </header>
 
       {/* Our Story Section */}
       <section className="py-24 relative kolam-faded overflow-hidden" id="story">
-        <div className="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-xl items-center fade-up-stagger">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-xl items-center"
+        >
           <div className="lg:col-span-6 lg:col-start-1 space-y-lg relative z-10">
             <h2 className="font-display-lg text-headline-lg text-primary lg:text-[80px] leading-[0.9] -ml-4 mix-blend-multiply">
               The Authentic<br/>
@@ -230,7 +75,7 @@ export default function Home() {
           </div>
           <div className="lg:col-span-5 lg:col-start-8 grid grid-cols-1 gap-lg relative">
             <div className="absolute -inset-10 bg-tertiary-fixed/20 blur-3xl rounded-full z-0"></div>
-            <div className="aspect-[3/4] mask-arch overflow-hidden bg-surface shadow-xl relative z-10 hover-target">
+            <div className="aspect-3/4 mask-arch overflow-hidden bg-surface shadow-xl relative z-10 hover-target">
               <img
                 alt="Authentic Taste"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000"
@@ -238,28 +83,34 @@ export default function Home() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Signature Menu Section */}
       <section className="py-32 relative bg-[#FAF9F6] z-20" id="menu">
-        <div className="max-w-container-max mx-auto px-gutter mb-16 fade-up-stagger text-right">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-container-max mx-auto px-gutter mb-16 text-right"
+        >
           <h2 className="font-display-lg text-headline-lg text-primary relative z-10 pt-16">
             Signature <span className="italic text-secondary font-display-lg">Menu</span>
           </h2>
-        </div>
+        </motion.div>
         <div className="w-full px-4 md:px-12">
           <div className="flex overflow-x-auto hide-scrollbar gap-8 pb-16 pt-8 px-4 menu-scroll-container items-center">
             
             {/* Card 1 */}
-            <div className="shrink-0 w-[85vw] md:w-[450px] bg-white rounded-3xl overflow-hidden border border-outline-variant/10 menu-card hover-target relative mt-8">
-              <div className="h-[300px] overflow-hidden relative group">
+            <div className="shrink-0 w-[85vw] md:w-112.5 bg-white rounded-3xl overflow-hidden border border-outline-variant/10 menu-card hover-target relative mt-8">
+              <div className="h-75 overflow-hidden relative group">
                 <img
                   alt="Ghee Podi Masala Dosa"
                   className="w-full h-full object-cover transition-transform duration-700"
                   src="/images/podi_dosa.png"
                 />
-                <div className="absolute top-6 right-6 bg-gradient-to-r from-[#F4B41A] to-[#fdbb24] text-on-tertiary-fixed px-4 py-2 rounded-full font-label-md text-label-md shadow-lg backdrop-blur-sm bg-opacity-90">
+                <div className="absolute top-6 right-6 bg-linear-to-r from-[#F4B41A] to-tertiary-fixed-dim text-on-tertiary-fixed px-4 py-2 rounded-full font-label-md text-label-md shadow-lg backdrop-blur-sm bg-opacity-90">
                   Bestseller
                 </div>
               </div>
@@ -280,8 +131,8 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="shrink-0 w-[85vw] md:w-[450px] bg-white rounded-3xl overflow-hidden border border-outline-variant/10 menu-card hover-target relative -mt-8">
-              <div className="h-[300px] overflow-hidden group">
+            <div className="shrink-0 w-[85vw] md:w-112.5 bg-white rounded-3xl overflow-hidden border border-outline-variant/10 menu-card hover-target relative -mt-8">
+              <div className="h-75 overflow-hidden group">
                 <img
                   alt="Ghee Thatte Idli"
                   className="w-full h-full object-cover transition-transform duration-700"
@@ -305,8 +156,8 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="shrink-0 w-[85vw] md:w-[450px] bg-white rounded-3xl overflow-hidden border border-outline-variant/10 menu-card hover-target relative mt-16">
-              <div className="h-[300px] overflow-hidden group">
+            <div className="shrink-0 w-[85vw] md:w-112.5 bg-white rounded-3xl overflow-hidden border border-outline-variant/10 menu-card hover-target relative mt-16">
+              <div className="h-75 overflow-hidden group">
                 <img
                   alt="Mini Ghee Podi Idlis"
                   className="w-full h-full object-cover transition-transform duration-700"
@@ -335,18 +186,30 @@ export default function Home() {
 
       {/* The Vibe Section */}
       <section className="py-24 bg-[#FAF9F6] kolam-faded" id="vibe">
-        <div className="max-w-container-max mx-auto px-gutter mb-16 text-center fade-up-stagger">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-container-max mx-auto px-gutter mb-16 text-center"
+        >
           <h2 className="font-display-lg text-headline-lg text-primary mb-6 mix-blend-multiply">
             The <span className="italic text-secondary font-display-lg">Vibe</span>
           </h2>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto font-light">
             A space designed for lingering conversations and the comforting aroma of roasted beans.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="max-w-container-max mx-auto px-gutter columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 fade-up-stagger">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-container-max mx-auto px-gutter columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
+        >
           
-          <div className="break-inside-avoid rounded-[2rem] overflow-hidden shadow-sm hover-target">
+          <div className="break-inside-avoid rounded-4xl overflow-hidden shadow-sm hover-target">
             <img
               alt="Cafe Interior"
               className="w-full h-auto hover:scale-105 transition-transform duration-700"
@@ -378,7 +241,7 @@ export default function Home() {
             />
           </div>
           
-          <div className="break-inside-avoid rounded-[2rem] overflow-hidden shadow-sm hover-target">
+          <div className="break-inside-avoid rounded-4xl overflow-hidden shadow-sm hover-target">
             <img
               alt="Barista Pouring"
               className="w-full h-auto hover:scale-105 transition-transform duration-700"
@@ -386,55 +249,73 @@ export default function Home() {
             />
           </div>
 
-        </div>
+        </motion.div>
       </section>
 
-      {/* Footer Section */}
-      <footer 
-        id="visit"
-        className="w-full py-24 bg-primary text-surface opacity-100 flex flex-col md:flex-row justify-between items-start px-lg max-w-none gap-lg mt-12 rounded-t-[4rem] relative z-20"
-      >
-        <div className="max-w-container-max mx-auto w-full flex flex-col md:flex-row justify-between items-start gap-16 px-gutter">
-          <div className="space-y-6">
-            <div className="font-display-lg text-[40px] text-tertiary-fixed-dim mb-2 mix-blend-screen">
-              Cafe Bengaluru
+      {/* Visit Us Section */}
+      <section className="py-24 bg-[#FAF9F6] relative z-20" id="visit">
+        <div className="max-w-container-max mx-auto px-gutter py-xl">
+          <div className="flex flex-col md:flex-row gap-xl">
+            {/* Left Column: Info */}
+            <div className="w-full md:w-[40%] flex flex-col justify-center gap-lg">
+              <div>
+                <h2 className="font-display-lg text-headline-lg text-secondary mb-sm leading-tight">Come Say Hello.</h2>
+                <div className="h-px w-16 bg-secondary-container mb-md"></div>
+                <p className="font-body-lg text-body-lg text-on-surface-variant mb-6 font-light">
+                  Ground Floor, Vanivihar Square, Plot no. A-167, Saheed Nagar, Bhubaneswar, Odisha 751007.
+                </p>
+                <div className="flex items-start gap-3 mb-6">
+                  <span 
+                    className="material-symbols-outlined text-tertiary-fixed-dim mt-1" 
+                    style={{ fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}
+                  >
+                    schedule
+                  </span>
+                  <div>
+                    <p className="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1 font-semibold">Open Daily</p>
+                    <p className="font-body-md text-body-md text-on-surface font-light">11:00 AM - 11:00 PM</p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4 mt-8">
+                  <a 
+                    href="https://maps.google.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full hover:bg-primary-container transition-all shadow-[0_4px_20px_rgba(74,46,27,0.1)] w-max hover-target"
+                  >
+                    <span className="material-symbols-outlined">location_on</span>
+                    Get Directions
+                  </a>
+                  <div className="flex items-center gap-6 mt-4">
+                    <a className="inline-flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-tertiary-container transition-colors border-b border-transparent hover:border-tertiary-fixed-dim pb-1 hover-target" href="tel:+919876543210">
+                      <span className="material-symbols-outlined text-[20px]">call</span>
+                      +91 98765 43210
+                    </a>
+                    <a className="inline-flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-tertiary-container transition-colors border-b border-transparent hover:border-tertiary-fixed-dim pb-1 hover-target" href="https://instagram.com/cafebengaluru" target="_blank" rel="noopener noreferrer">
+                      <span className="material-symbols-outlined text-[20px]">photo_camera</span>
+                      @cafebengaluru
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="font-body-md text-body-md text-primary-fixed-dim max-w-sm font-light leading-relaxed">
-              Ground Floor, Vanivihar Square,<br/>
-              Saheed Nagar, Bhubaneswar.
-            </p>
-            <p className="font-body-md text-body-md text-primary-fixed-dim font-light">
-              11:00 AM - 11:00 PM
-            </p>
-            <div className="pt-4 flex gap-6">
-              <a className="text-primary-fixed-dim hover:text-tertiary-fixed transition-colors hover-target" href="#">
-                <span className="material-symbols-outlined text-[24px]">photo_camera</span>
-              </a>
-              <a className="text-primary-fixed-dim hover:text-tertiary-fixed transition-colors hover-target" href="#">
-                <span className="material-symbols-outlined text-[24px]">directions</span>
-              </a>
+            {/* Right Column: Visuals */}
+            <div className="w-full md:w-[60%] relative min-h-125 flex items-center justify-center">
+              {/* Map Container */}
+              <div className="w-full h-112.5 md:h-full rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
+                <img alt="Map location" className="w-full h-full object-cover" src="/images/map_location.png" />
+              </div>
+              {/* Overlapping Polaroid */}
+              <div className="absolute -bottom-8 -left-8 md:bottom-8 md:-left-12 z-20 bg-surface p-4 pb-12 rounded-lg shadow-[0_12px_40px_rgba(74,46,27,0.15)] transform -rotate-3 border border-surface-variant max-w-60 md:max-w-70">
+                <div className="rounded-sm overflow-hidden aspect-square">
+                  <img alt="Cafe exterior" className="w-full h-full object-cover" src="/images/cafe_exterior.png" />
+                </div>
+                <p className="font-headline-md text-[20px] text-center text-secondary mt-4 -mb-5 font-medium opacity-80">See you soon</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row gap-16 mt-8 md:mt-0">
-            <div className="flex flex-col gap-4">
-              <a className="font-body-md text-body-md text-primary-fixed-dim hover:text-tertiary-fixed transition-colors hover-target font-light" href="#">
-                Privacy Policy
-              </a>
-              <a className="font-body-md text-body-md text-primary-fixed-dim hover:text-tertiary-fixed transition-colors hover-target font-light" href="#">
-                Terms of Service
-              </a>
-              <a className="font-body-md text-body-md text-primary-fixed-dim hover:text-tertiary-fixed transition-colors hover-target font-light" href="#">
-                Contact Us
-              </a>
-            </div>
-          </div>
-          <div className="w-full md:w-auto mt-8 md:mt-0 pt-8 md:pt-0 border-t border-primary-fixed-dim/20 md:border-none">
-            <p className="font-body-md text-body-md text-primary-fixed-dim font-light">
-              © 2024 Cafe Bengaluru. All rights reserved.
-            </p>
           </div>
         </div>
-      </footer>
+      </section>
     </>
   );
 }

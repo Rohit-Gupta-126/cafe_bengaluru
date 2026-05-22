@@ -116,33 +116,6 @@
   scrollbar-width: none;
 }
 
-/* Custom Cursor Rules (Only applied if device supports hover) */
-@media (hover: hover) {
-  body {
-    cursor: none;
-  }
-}
-
-#custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background-color: rgba(121, 87, 65, 0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
-  mix-blend-mode: multiply;
-}
-
-.hover-active #custom-cursor {
-  transform: translate(-50%, -50%) scale(1.5);
-  background-color: rgba(244, 180, 26, 0.6);
-}
-
 /* Paper Grain Texture Overlay */
 .paper-grain {
   position: relative;
