@@ -1,218 +1,966 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function AboutClient() {
   const { scrollY } = useScroll();
-  
-  // Hero Parallax
-  const heroScale = useTransform(scrollY, [0, 1000], [1.05, 1.25]);
-  const heroY = useTransform(scrollY, [0, 1000], [0, 150]);
 
-  // Floating Elements
-  const leaf1Y = useTransform(scrollY, [0, 2000], [0, 300]);
-  const leaf1Rotate = useTransform(scrollY, [0, 2000], [45, 145]);
-  const leaf2Y = useTransform(scrollY, [0, 2000], [0, 600]);
-  const leaf2Rotate = useTransform(scrollY, [0, 2000], [-15, 85]);
+  // Hero parallax
+  const heroScale = useTransform(scrollY, [0, 900], [1, 1.12]);
+  const heroTextY  = useTransform(scrollY, [0, 900], [0, 180]);
+  const heroOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   return (
-    <>
-      <main className="flex-grow pt-0 overflow-hidden relative z-10">
-        
-        {/* SEQUENCE 1: Hero Section (0-100vh) */}
-        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-background">
-          <div className="absolute inset-0 z-0">
-            <motion.img 
-              id="hero-bg"
-              alt="Vintage Coffee House" 
-              className="w-full h-full object-cover opacity-60 mix-blend-multiply will-change-transform"
-              src="/images/story_heritage.png"
-              style={{ scale: heroScale, y: heroY }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background"></div>
-          </div>
-          <div className="relative z-10 text-center px-lg max-w-4xl">
-            <motion.h1 
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="font-display-lg text-headline-lg md:text-display-lg text-secondary leading-tight mb-8"
+    <main style={{ background: '#faf9f6', position: 'relative', width: '100%', overflowX: 'hidden' }}>
+
+      {/* ══════════════════════════════════════════════
+           HERO — Full-bleed editorial (matches homepage)
+      ══════════════════════════════════════════════ */}
+      <section
+        id="hero-story"
+        style={{ position: 'relative', width: '100%', overflow: 'hidden', height: '100svh', minHeight: 640 }}
+      >
+        {/* Background image with parallax scale */}
+        <motion.div
+          style={{ scale: heroScale, position: 'absolute', inset: 0, transformOrigin: 'center' }}
+        >
+          <img
+            alt="Heritage cafe ambience"
+            src="/images/story_heritage.png"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+          />
+        </motion.div>
+
+        {/* Strong directional gradients — identical pattern to homepage */}
+        <div
+          style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            background: 'linear-gradient(to top, rgba(15,10,5,0.95) 0%, rgba(15,10,5,0.55) 42%, rgba(15,10,5,0.08) 100%)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            background: 'linear-gradient(to right, rgba(15,10,5,0.60) 0%, transparent 65%)',
+          }}
+        />
+
+        {/* Text block — pinned to bottom-left exactly like homepage hero */}
+        <motion.div
+          style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0, pointerEvents: 'none' }}
+        >
+          <div
+            style={{
+              pointerEvents: 'auto',
+              maxWidth: 1200,
+              margin: '0 auto',
+              padding: '0 32px 80px',
+            }}
+          >
+            {/* Eye-brow */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              style={{
+                fontFamily: 'var(--font-jakarta), sans-serif',
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#F4B41A',
+                marginBottom: 20,
+              }}
             >
-              It started in the heart of <br/>
-              <span className="text-primary italic">Namma Bengaluru.</span>
+              Our Story · Since 2021
+            </motion.p>
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 44 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.95, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                fontFamily: 'var(--font-playfair), serif',
+                fontSize: 'clamp(52px, 9vw, 120px)',
+                fontWeight: 700,
+                lineHeight: 0.92,
+                letterSpacing: '-0.03em',
+                color: '#FFFFFF',
+                margin: 0,
+                marginBottom: 28,
+                maxWidth: '14ch',
+              }}
+            >
+              Namma<br />
+              <em style={{ color: '#F4B41A', fontStyle: 'italic' }}>Heritage.</em>
             </motion.h1>
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-secondary/60 animate-bounce-slow">
-              <span className="font-label-md text-label-md uppercase tracking-widest">Scroll to Journey</span>
-              <span className="material-symbols-outlined text-[24px]">south</span>
-            </div>
-          </div>
-        </section>
 
-        {/* SEQUENCE 2: The Journey (100-200vh) */}
-        <section className="relative min-h-screen py-32 px-4 md:px-lg flex flex-col justify-center bg-background border-y border-outline-variant/30 overflow-hidden">
-          {/* Decorative Floating Leaves */}
-          <motion.div 
-            className="absolute top-20 right-[10%] opacity-20 pointer-events-none z-0" 
-            style={{ y: leaf1Y, rotate: leaf1Rotate }}
-          >
-            <span className="material-symbols-outlined text-[120px] text-primary">eco</span>
-          </motion.div>
-          <motion.div 
-            className="absolute bottom-20 left-[5%] opacity-10 pointer-events-none z-0" 
-            style={{ y: leaf2Y, rotate: leaf2Rotate }}
-          >
-            <span className="material-symbols-outlined text-[180px] text-primary">filter_vintage</span>
-          </motion.div>
-
-          <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
-            <div className="relative">
-              {/* Path Image */}
-              <img 
-                alt="Heritage Journey Path" 
-                className="rounded-3xl w-full h-[400px] md:h-[600px] object-cover grayscale brightness-95 contrast-110 mix-blend-multiply opacity-80 shadow-md"
-                src="/images/story_journey_path.png"
-              />
-            </div>
-            <div className="flex flex-col gap-16 lg:gap-24">
-              <motion.div 
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="ml-0 md:ml-12 border-l-2 border-primary pl-8 py-2"
-              >
-                <p className="font-headline-md text-headline-md text-secondary leading-relaxed">We packed the stone grinders.</p>
-                <p className="font-body-lg text-body-lg text-on-surface-variant mt-2 italic font-light">The rhythmic sound of grinding became our heartbeat.</p>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                className="ml-0 md:ml-24 border-l-2 border-tertiary pl-8 py-2"
-              >
-                <p className="font-headline-md text-headline-md text-secondary leading-relaxed">We sourced the artisanal ghee.</p>
-                <p className="font-body-lg text-body-lg text-on-surface-variant mt-2 italic font-light">Golden, aromatic, and pure as morning light.</p>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-                className="ml-0 md:ml-6 border-l-2 border-primary pl-8 py-2"
-              >
-                <p className="font-headline-md text-headline-md text-secondary leading-relaxed">We brought the exact flavors of home...</p>
-                <p className="font-body-lg text-body-lg text-on-surface-variant mt-2 italic font-light">Transplanted with love across three thousand miles.</p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* SEQUENCE 3: Odisha Connection (200-300vh) */}
-        <section className="relative min-h-screen py-32 flex flex-col items-center justify-center bg-surface-container-low px-4 md:px-lg overflow-hidden">
-          <div className="relative w-full max-w-5xl group z-10">
-            {/* Cafe Interior Wrapper */}
-            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-secondary-container/5">
-              <img 
-                alt="Modern Cafe Interior" 
-                className="w-full aspect-video object-cover transition-transform duration-[2s] group-hover:scale-105 will-change-transform"
-                src="/images/story_cafe_interior.png"
-              />
-              <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.15)] bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
-            </div>
-            
-            {/* Gold Badge Overlay */}
-            <motion.div 
-              initial={{ opacity: 0, y: 32, rotate: 0 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 12 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              className="absolute -top-10 -right-4 md:-top-12 md:-right-12 w-40 h-40 md:w-48 md:h-48 bg-gradient-to-br from-tertiary-container to-tertiary text-on-tertiary-container rounded-full flex flex-col items-center justify-center p-6 text-center shadow-xl border-4 border-surface-bright transform"
+            {/* Sub-line */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.55 }}
+              style={{ display: 'flex', alignItems: 'flex-end', gap: 48, flexWrap: 'wrap' }}
             >
-              <span className="material-symbols-outlined text-3xl md:text-4xl mb-1 text-[#fdbb24]" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-              <span className="font-label-md text-label-md font-bold uppercase tracking-wider leading-tight">Est. In Odisha</span>
-              <div className="mt-1.5 h-px w-12 bg-on-tertiary-container/30"></div>
-              <span className="text-[10px] md:text-[11px] mt-1.5 font-medium opacity-80 italic">Since 2021</span>
-            </motion.div>
-
-            <div className="mt-16 text-center max-w-2xl mx-auto">
-              <motion.h2 
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="font-display-lg text-headline-lg text-secondary leading-tight"
+              <p
+                style={{
+                  fontFamily: 'var(--font-jakarta), sans-serif',
+                  fontSize: 17,
+                  fontWeight: 300,
+                  lineHeight: 1.65,
+                  color: 'rgba(255,255,255,0.80)',
+                  maxWidth: 380,
+                  margin: 0,
+                }}
               >
-                ...And planted them in <br/>
-                <span className="text-primary font-bold">Vanivihar Square.</span>
-              </motion.h2>
-              <motion.div 
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                className="mt-8 flex justify-center items-center gap-4"
-              >
-                <div className="h-px w-16 bg-outline-variant/60"></div>
-                <span className="material-symbols-outlined text-secondary text-[24px]">restaurant_menu</span>
-                <div className="h-px w-16 bg-outline-variant/60"></div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+                From the coffee houses of Bengaluru to the heart of Bhubaneswar —
+                a story of ritual, memory, and pure artisanal craft.
+              </p>
 
-        {/* SEQUENCE 4: CTA & Quote (300-400vh) */}
-        <section className="relative h-[85vh] flex items-center justify-center bg-primary overflow-hidden px-4 md:px-lg text-white">
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-            <div className="grid grid-cols-3 md:grid-cols-6 h-full w-full items-center justify-center p-md">
-              <span className="material-symbols-outlined text-[150px] text-white">spa</span>
-              <span className="material-symbols-outlined text-[120px] text-white mt-24">potted_plant</span>
-              <span className="material-symbols-outlined text-[180px] text-white">coffee_maker</span>
-              <span className="material-symbols-outlined text-[130px] text-white">nest_multi_room</span>
-              <span className="material-symbols-outlined text-[200px] text-white mt-16">humidity_low</span>
-              <span className="material-symbols-outlined text-[150px] text-white">grass</span>
-            </div>
-          </div>
-          <div className="relative z-10 max-w-4xl px-gutter text-center">
-            <motion.blockquote 
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="font-display-lg text-headline-md md:text-headline-lg text-surface-bright leading-tight italic"
-            >
-              "A space designed for lingering conversations and the comforting aroma of roasted beans."
-            </motion.blockquote>
-            <motion.div 
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-              className="mt-16 flex flex-col items-center gap-6"
-            >
-              <Link 
+              <Link
                 href="/menu"
-                className="inline-flex items-center justify-center px-10 py-5 bg-surface-bright text-primary text-label-md font-bold uppercase tracking-[0.2em] rounded-full hover:bg-tertiary-fixed hover:scale-105 transition-all duration-300 shadow-lg hover-target"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '16px 32px',
+                  borderRadius: 9999,
+                  background: 'linear-gradient(135deg, #2E5C31, #4A2E1B)',
+                  color: '#fff',
+                  fontFamily: 'var(--font-jakarta), sans-serif',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  boxShadow: '0 8px 32px rgba(46,92,49,0.45)',
+                  transition: 'transform 0.25s, box-shadow 0.25s',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.transform = 'scale(1.05)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(46,92,49,0.6)';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(46,92,49,0.45)';
+                }}
               >
-                Explore Our Menu
+                Explore the Menu
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
               </Link>
-              <div className="flex gap-4">
-                <a className="w-12 h-12 rounded-full border border-surface-bright/20 flex items-center justify-center text-surface-bright hover:bg-surface-bright hover:text-primary transition-all duration-300 hover-target" href="#">
-                  <span className="material-symbols-outlined text-xl">share</span>
-                </a>
-                <a className="w-12 h-12 rounded-full border border-surface-bright/20 flex items-center justify-center text-surface-bright hover:bg-surface-bright hover:text-primary transition-all duration-300 hover-target" href="/visit">
-                  <span className="material-symbols-outlined text-xl">location_on</span>
-                </a>
-              </div>
+            </motion.div>
+
+            {/* Scroll hint */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.4 }}
+              style={{ marginTop: 48, display: 'flex', alignItems: 'center', gap: 12 }}
+            >
+              <div style={{ width: 1, height: 48, background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5))' }} />
+              <span
+                style={{
+                  fontFamily: 'var(--font-jakarta), sans-serif',
+                  fontSize: 11,
+                  fontWeight: 500,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.45)',
+                }}
+              >
+                Scroll to explore
+              </span>
             </motion.div>
           </div>
-        </section>
+        </motion.div>
 
-      </main>
+        {/* Floating badge top-right */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 1 }}
+          style={{ position: 'absolute', top: 112, right: 32, pointerEvents: 'none' }}
+        >
+          <div
+            style={{
+              width: 96,
+              height: 96,
+              borderRadius: '50%',
+              border: '1px solid rgba(244,180,26,0.4)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backdropFilter: 'blur(8px)',
+              background: 'rgba(244,180,26,0.08)',
+              textAlign: 'center',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-playfair), serif',
+                fontSize: 11,
+                color: '#F4B41A',
+                lineHeight: 1.3,
+                padding: '0 8px',
+              }}
+            >
+              Est.<br />in Odisha<br />
+              <strong>2021</strong>
+            </span>
+          </div>
+        </motion.div>
+      </section>
 
-    </>
+
+      {/* ══════════════════════════════════════════════
+           SECTION 2 — Cinematic Journey Timeline
+           Dark full-bleed strip with 3 numbered chapters
+      ══════════════════════════════════════════════ */}
+      <section
+        style={{
+          position: 'relative',
+          background: '#0F0A05',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Ambient grain overlay */}
+        <div
+          style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            opacity: 0.04,
+            mixBlendMode: 'screen',
+          }}
+        />
+        {/* Gold glow top-right */}
+        <div style={{ position: 'absolute', top: -120, right: -80, width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,180,26,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px' }}>
+
+          {/* Section header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ marginBottom: 80 }}
+          >
+            <p style={{
+              fontFamily: 'var(--font-jakarta), sans-serif',
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: '#F4B41A',
+              margin: '0 0 16px',
+            }}>
+              The Journey
+            </p>
+            <h2 style={{
+              fontFamily: 'var(--font-playfair), serif',
+              fontSize: 'clamp(32px, 4vw, 56px)',
+              fontWeight: 700,
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+              color: '#faf9f6',
+              margin: 0,
+              maxWidth: '18ch',
+            }}>
+              How Bengaluru's ritual
+              {' '}<em style={{ color: '#F4B41A' }}>found its new home.</em>
+            </h2>
+          </motion.div>
+
+          {/* Three chapters — stacked with connecting line */}
+          <div style={{ position: 'relative' }}>
+            {/* Vertical connector line */}
+            <div style={{
+              position: 'absolute',
+              left: 23,
+              top: 0,
+              bottom: 0,
+              width: 1,
+              background: 'linear-gradient(to bottom, rgba(244,180,26,0.6), rgba(244,180,26,0.1), transparent)',
+              pointerEvents: 'none',
+            }} />
+
+            {[
+              {
+                num: '01',
+                heading: 'We Packed the Stone Grinders.',
+                body: 'Every grain of rice. Every lentil measured by memory, not measurement. The stone grinders that our grandmothers used — carried across state lines because the batter they produced simply could not be replicated any other way.',
+                img: '/images/story_journey_path.png',
+                alt: 'Stone grinder heritage',
+              },
+              {
+                num: '02',
+                heading: 'We Sourced the Exact Beans.',
+                body: 'Single-estate Arabica from Chikmagalur, dark-roasted and blended with 20% chicory. The decoction must be heavy-bodied, intensely aromatic, and capable of standing tall even when diluted with frothed milk.',
+                img: '/images/filter_coffee_vibe.png',
+                alt: 'Chikmagalur filter coffee',
+              },
+              {
+                num: '03',
+                heading: 'We Opened the Doors.',
+                body: 'Vanivihar Square, Saheed Nagar. A space designed with earthy tones, tactile textures, and the low hum of conversation — a small corner of Bengaluru planted firmly in Bhubaneswar.',
+                img: '/images/cafe_interior.png',
+                alt: 'Cafe Bengaluru interior',
+              },
+            ].map((chapter, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -32 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '48px 1fr',
+                  gap: '0 48px',
+                  alignItems: 'start',
+                  paddingBottom: i < 2 ? 80 : 0,
+                }}
+              >
+                {/* Chapter number bubble */}
+                <div style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  background: 'rgba(244,180,26,0.10)',
+                  border: '1px solid rgba(244,180,26,0.35)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  position: 'relative',
+                  zIndex: 1,
+                }}>
+                  <span style={{
+                    fontFamily: 'var(--font-jakarta), sans-serif',
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.05em',
+                    color: '#F4B41A',
+                  }}>{chapter.num}</span>
+                </div>
+
+                {/* Chapter content */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 48, alignItems: 'center' }}>
+                  <div>
+                    <h3 style={{
+                      fontFamily: 'var(--font-playfair), serif',
+                      fontSize: 'clamp(22px, 2.5vw, 34px)',
+                      fontWeight: 700,
+                      color: '#faf9f6',
+                      lineHeight: 1.15,
+                      letterSpacing: '-0.02em',
+                      margin: '0 0 20px',
+                    }}>
+                      {chapter.heading}
+                    </h3>
+                    <p style={{
+                      fontFamily: 'var(--font-jakarta), sans-serif',
+                      fontSize: 16,
+                      fontWeight: 300,
+                      lineHeight: 1.75,
+                      color: 'rgba(250,249,246,0.55)',
+                      margin: 0,
+                      maxWidth: 520,
+                    }}>
+                      {chapter.body}
+                    </p>
+                  </div>
+
+                  {/* Chapter image */}
+                  <div style={{
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                    aspectRatio: '4 / 3',
+                    position: 'relative',
+                  }}>
+                    <img
+                      src={chapter.img}
+                      alt={chapter.alt}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                        filter: 'grayscale(30%) brightness(0.85)',
+                        transition: 'filter 0.6s ease, transform 0.8s ease',
+                      }}
+                      onMouseEnter={e => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.filter = 'grayscale(0%) brightness(1)';
+                        el.style.transform = 'scale(1.04)';
+                      }}
+                      onMouseLeave={e => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.filter = 'grayscale(30%) brightness(0.85)';
+                        el.style.transform = 'scale(1)';
+                      }}
+                    />
+                    {/* Subtle gold frame */}
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      border: '1px solid rgba(244,180,26,0.12)',
+                      borderRadius: 20,
+                      pointerEvents: 'none',
+                    }} />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══════════════════════════════════════════════
+           SECTION 3 — "By the Numbers" typographic stats
+           Bold oversized numerals on warm cream background
+      ══════════════════════════════════════════════ */}
+      <section
+        style={{
+          position: 'relative',
+          background: '#F5F0E8',
+          borderTop: '1px solid rgba(193,201,189,0.4)',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Faint diagonal label */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%) rotate(-12deg)',
+          fontFamily: 'var(--font-playfair), serif',
+          fontSize: 'clamp(80px, 14vw, 200px)',
+          fontWeight: 700,
+          color: 'rgba(22,68,28,0.04)',
+          letterSpacing: '-0.04em',
+          whiteSpace: 'nowrap',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          lineHeight: 1,
+        }}>
+          Our Story
+        </div>
+
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px', position: 'relative', zIndex: 10 }}>
+
+          {/* Section header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: 80 }}
+          >
+            <p style={{
+              fontFamily: 'var(--font-jakarta), sans-serif',
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: '#795741',
+              margin: '0 0 14px',
+            }}>
+              The Craft in Numbers
+            </p>
+            <h2 style={{
+              fontFamily: 'var(--font-playfair), serif',
+              fontSize: 'clamp(28px, 3.5vw, 48px)',
+              fontWeight: 700,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              color: '#16441c',
+              margin: 0,
+            }}>
+              Obsession, measured.
+            </h2>
+          </motion.div>
+
+          {/* Stats grid — 4 columns */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 0,
+          }}>
+            {[
+              {
+                stat: '14',
+                unit: 'Hours',
+                label: 'Fermentation time for our stone-ground batter. No shortcuts. No additives.',
+                accent: '#16441c',
+              },
+              {
+                stat: '3K',
+                unit: 'Miles',
+                label: 'The distance our recipes, techniques, and equipment travelled from Bengaluru.',
+                accent: '#795741',
+              },
+              {
+                stat: '20',
+                unit: '% Chicory',
+                label: 'The exact blend ratio in our Chikmagalur decoction for the perfect heavy body.',
+                accent: '#16441c',
+              },
+              {
+                stat: '2021',
+                unit: 'Founded',
+                label: 'The year Cafe Bengaluru opened its doors in Bhubaneswar, Odisha.',
+                accent: '#795741',
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                style={{
+                  padding: '48px 40px',
+                  borderRight: i < 3 ? '1px solid rgba(193,201,189,0.6)' : 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12,
+                }}
+              >
+                {/* Big number */}
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                  <span style={{
+                    fontFamily: 'var(--font-playfair), serif',
+                    fontSize: 'clamp(52px, 6vw, 88px)',
+                    fontWeight: 700,
+                    lineHeight: 1,
+                    letterSpacing: '-0.04em',
+                    color: item.accent,
+                  }}>
+                    {item.stat}
+                  </span>
+                </div>
+                {/* Unit */}
+                <p style={{
+                  fontFamily: 'var(--font-jakarta), sans-serif',
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: '#F4B41A',
+                  margin: 0,
+                }}>
+                  {item.unit}
+                </p>
+                {/* Thin rule */}
+                <div style={{ width: 32, height: 1, background: 'rgba(114,121,111,0.3)', margin: '4px 0' }} />
+                {/* Description */}
+                <p style={{
+                  fontFamily: 'var(--font-jakarta), sans-serif',
+                  fontSize: 14,
+                  fontWeight: 300,
+                  lineHeight: 1.7,
+                  color: '#424940',
+                  margin: 0,
+                }}>
+                  {item.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom quote strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            style={{
+              marginTop: 0,
+              borderTop: '1px solid rgba(193,201,189,0.6)',
+              padding: '48px 40px 0',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 32,
+              flexWrap: 'wrap',
+            }}
+          >
+            <p style={{
+              fontFamily: 'var(--font-playfair), serif',
+              fontSize: 'clamp(18px, 2vw, 26px)',
+              fontStyle: 'italic',
+              fontWeight: 600,
+              color: '#16441c',
+              margin: 0,
+              maxWidth: '54ch',
+              lineHeight: 1.4,
+            }}>
+              "Authenticity isn't just about ingredients — it's about the feeling. Sensory heritage."
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-jakarta), sans-serif',
+              fontSize: 12,
+              fontWeight: 500,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'rgba(114,121,111,0.6)',
+              margin: 0,
+              flexShrink: 0,
+            }}>
+              — The Founders
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ══════════════════════════════════════════════
+           SECTION 4 — Odisha Connection (full-bleed image + overlay text)
+      ══════════════════════════════════════════════ */}
+      <section
+        style={{
+          position: 'relative',
+          width: '100%',
+          overflow: 'hidden',
+          height: '80vh',
+          minHeight: 560,
+          borderTop: '1px solid rgba(193,201,189,0.3)',
+        }}
+      >
+        <img
+          src="/images/story_cafe_interior.png"
+          alt="Cafe Bengaluru in Bhubaneswar"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        />
+        {/* Gradient overlay */}
+        <div
+          style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(135deg, rgba(22,68,28,0.92) 0%, rgba(22,68,28,0.60) 50%, rgba(22,68,28,0.15) 100%)',
+          }}
+        />
+
+        {/* Text — pinned to left-center */}
+        <motion.div
+          initial={{ opacity: 0, x: -48 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', width: '100%' }}>
+            <p
+              style={{
+                fontFamily: 'var(--font-jakarta), sans-serif',
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#F4B41A',
+                marginBottom: 20,
+              }}
+            >
+              Planted in Odisha
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-playfair), serif',
+                fontSize: 'clamp(40px, 5.5vw, 80px)',
+                fontWeight: 700,
+                lineHeight: 0.95,
+                letterSpacing: '-0.03em',
+                color: '#fff',
+                margin: 0,
+                marginBottom: 24,
+                maxWidth: '12ch',
+              }}
+            >
+              …And planted them in{' '}
+              <em style={{ color: '#F4B41A' }}>Vanivihar Square.</em>
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-jakarta), sans-serif',
+                fontSize: 17,
+                fontWeight: 300,
+                lineHeight: 1.65,
+                color: 'rgba(255,255,255,0.78)',
+                maxWidth: 440,
+                margin: '0 0 40px',
+              }}
+            >
+              Ground Floor, Vanivihar Square, Saheed Nagar, Bhubaneswar — a space designed for lingering conversations and the comforting aroma of roasted beans.
+            </p>
+            <Link
+              href="/visit"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+                padding: '14px 28px',
+                borderRadius: 9999,
+                border: '1px solid rgba(255,255,255,0.35)',
+                color: '#fff',
+                fontFamily: 'var(--font-jakarta), sans-serif',
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                backdropFilter: 'blur(8px)',
+                background: 'rgba(255,255,255,0.08)',
+                transition: 'background 0.25s, border-color 0.25s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.18)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.6)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.35)';
+              }}
+              className="hover-target"
+            >
+              Visit Us
+              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>location_on</span>
+            </Link>
+          </div>
+        </motion.div>
+
+        {/* Est. badge — top right */}
+        <motion.div
+          initial={{ opacity: 0, rotate: -12, scale: 0.8 }}
+          whileInView={{ opacity: 1, rotate: 12, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          style={{
+            position: 'absolute',
+            top: 48, right: 48,
+            width: 120, height: 120,
+            borderRadius: '50%',
+            border: '1px solid rgba(244,180,26,0.5)',
+            background: 'rgba(244,180,26,0.12)',
+            backdropFilter: 'blur(12px)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#F4B41A', marginBottom: 4 }}>verified</span>
+          <span
+            style={{
+              fontFamily: 'var(--font-playfair), serif',
+              fontSize: 11,
+              color: '#F4B41A',
+              lineHeight: 1.4,
+              padding: '0 10px',
+            }}
+          >
+            Est. in<br />Odisha<br /><strong>2021</strong>
+          </span>
+        </motion.div>
+      </section>
+
+
+      {/* ══════════════════════════════════════════════
+           SECTION 5 — Final Quote CTA (matches homepage testimonial style)
+      ══════════════════════════════════════════════ */}
+      <section
+        style={{
+          position: 'relative',
+          padding: '120px 32px',
+          background: '#16441c',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Subtle decorative shapes */}
+        <div
+          style={{
+            position: 'absolute', left: -80, top: 0,
+            width: 260, height: 260,
+            borderRadius: '50%',
+            background: 'rgba(46,92,49,0.5)',
+            filter: 'blur(48px)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute', right: 0, bottom: 0,
+            width: 380, height: 380,
+            borderRadius: '50%',
+            background: 'rgba(253,187,36,0.06)',
+            filter: 'blur(64px)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div
+          style={{
+            maxWidth: 860,
+            margin: '0 auto',
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 10,
+          }}
+        >
+          <span
+            className="material-symbols-outlined"
+            style={{ fontSize: 56, color: 'rgba(253,187,36,0.4)', marginBottom: 32, display: 'block' }}
+          >
+            format_quote
+          </span>
+
+          <motion.blockquote
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              fontFamily: 'var(--font-playfair), serif',
+              fontSize: 'clamp(24px, 3.5vw, 44px)',
+              fontWeight: 600,
+              lineHeight: 1.25,
+              letterSpacing: '-0.01em',
+              color: '#faf9f6',
+              fontStyle: 'italic',
+              margin: 0,
+            }}
+          >
+            "A space designed for lingering conversations and the comforting aroma of roasted beans."
+          </motion.blockquote>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            style={{ marginTop: 56, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}
+          >
+            {/* Thin separator */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
+              <div style={{ width: 48, height: 1, background: 'rgba(255,255,255,0.2)' }} />
+              <span
+                style={{
+                  fontFamily: 'var(--font-jakarta), sans-serif',
+                  fontSize: 11,
+                  fontWeight: 500,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.35)',
+                }}
+              >
+                Cafe Bengaluru
+              </span>
+              <div style={{ width: 48, height: 1, background: 'rgba(255,255,255,0.2)' }} />
+            </div>
+
+            <Link
+              href="/menu"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+                padding: '16px 36px',
+                borderRadius: 9999,
+                background: '#faf9f6',
+                color: '#16441c',
+                fontFamily: 'var(--font-jakarta), sans-serif',
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+                transition: 'transform 0.25s, box-shadow 0.25s, background 0.25s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'scale(1.05)';
+                (e.currentTarget as HTMLElement).style.background = '#F4B41A';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
+                (e.currentTarget as HTMLElement).style.background = '#faf9f6';
+              }}
+              className="hover-target"
+            >
+              Explore Our Menu
+              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
+            </Link>
+
+            {/* Social row */}
+            <div style={{ display: 'flex', gap: 16, marginTop: 8 }}>
+              <a
+                href="https://instagram.com/cafebengaluru"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: 44, height: 44,
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'rgba(255,255,255,0.5)',
+                  textDecoration: 'none',
+                  transition: 'border-color 0.25s, color 0.25s, background 0.25s',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = '#F4B41A';
+                  (e.currentTarget as HTMLElement).style.color = '#F4B41A';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)';
+                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
+                }}
+                className="hover-target"
+                aria-label="Instagram"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>photo_camera</span>
+              </a>
+              <a
+                href="/visit"
+                style={{
+                  width: 44, height: 44,
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'rgba(255,255,255,0.5)',
+                  textDecoration: 'none',
+                  transition: 'border-color 0.25s, color 0.25s',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = '#F4B41A';
+                  (e.currentTarget as HTMLElement).style.color = '#F4B41A';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)';
+                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
+                }}
+                className="hover-target"
+                aria-label="Visit Us"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>location_on</span>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+    </main>
   );
 }
