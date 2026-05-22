@@ -76,10 +76,10 @@ export default function MenuPage() {
       <main className="grow pt-32 pb-xl relative z-10">
         <section className="max-w-container-max mx-auto px-lg mb-xl flex flex-col md:flex-row justify-between items-start md:items-end gap-lg relative">
           <div>
-            <h1 className="font-display-lg text-headline-lg md:text-display-lg text-secondary mb-sm max-w-xl leading-tight">
+            <h1 className="font-display-lg text-headline-lg md:text-display-lg text-secondary mb-sm max-w-[36rem] leading-tight">
               Sensory Heritage, Plated.
             </h1>
-            <p className="text-on-surface-variant/80 font-body-lg text-body-lg max-w-md font-light">
+            <p className="text-on-surface-variant/80 font-body-lg text-body-lg max-w-[28rem] font-light">
               Discover the authentic flavors of South India, crafted with sensory heritage and premium ingredients.
             </p>
           </div>
@@ -128,7 +128,7 @@ export default function MenuPage() {
                     <h3 className="font-headline-md text-display-sm text-white leading-tight mb-2">
                       Ghee Podi Masala Dosa
                     </h3>
-                    <p className="text-white/80 font-body-md text-body-md max-w-sm font-light">
+                    <p className="text-white/80 font-body-md text-body-md max-w-[24rem] font-light">
                       Crispy, golden, loaded with spicy gun powder.
                     </p>
                   </div>

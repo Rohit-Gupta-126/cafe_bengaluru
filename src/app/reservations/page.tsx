@@ -19,10 +19,10 @@ export default function ReservationsPage() {
           
           {/* Headline and Info */}
           <div className="lg:col-span-5 flex flex-col justify-center">
-            <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-md mix-blend-multiply leading-tight max-w-sm">
+            <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-md mix-blend-multiply leading-tight max-w-[24rem]">
               Reserve your <span className="italic text-secondary">Table.</span>
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant font-light max-w-md leading-relaxed mb-10">
+            <p className="font-body-lg text-body-lg text-on-surface-variant font-light max-w-[28rem] leading-relaxed mb-10">
               Join us for an immersive dining experience. Whether it's an intimate morning filter coffee or a bustling weekend breakfast, we have a spot for you.
             </p>
 

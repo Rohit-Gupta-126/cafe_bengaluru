@@ -19,7 +19,7 @@ export default function AboutClient() {
 
   return (
     <>
-      <main className="flex-grow pt-[100px] overflow-hidden relative z-10">
+      <main className="flex-grow pt-0 overflow-hidden relative z-10">
         
         {/* SEQUENCE 1: Hero Section (0-100vh) */}
         <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-background">

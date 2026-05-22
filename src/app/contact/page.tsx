@@ -19,7 +19,7 @@ export default function ContactPage() {
           <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-sm mix-blend-multiply leading-tight">
             Come Say <span className="italic text-secondary">Hello.</span>
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant font-light max-w-lg">
+          <p className="font-body-lg text-body-lg text-on-surface-variant font-light max-w-[32rem]">
             Whether it's a catering request, feedback, or just a shared love for filter coffee. We're listening.
           </p>
         </div>

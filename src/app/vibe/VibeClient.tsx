@@ -65,7 +65,7 @@ export default function VibeClient() {
             <h1 className="font-display-lg text-display-lg md:text-[80px] md:leading-[90px] text-secondary mb-md">
               Sunlight,<br/> Steam, &amp;<br/> Conversations.
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-md font-light">
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-[28rem] font-light">
               Immerse yourself in the sensory landscape of South Indian coffee culture, where every detail is curated to evoke a sense of home and heritage.
             </p>
           </motion.div>
