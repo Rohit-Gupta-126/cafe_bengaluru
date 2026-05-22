@@ -74,9 +74,6 @@ export default function Footer() {
                 <Link href="/vibe" className="hover:text-white transition-colors duration-300 hover-target">The Vibe</Link>
               </li>
               <li>
-                <Link href="/reservations" className="hover:text-white transition-colors duration-300 hover-target">Reservations</Link>
-              </li>
-              <li>
                 <Link href="/visit" className="hover:text-white transition-colors duration-300 hover-target">Visit Us</Link>
               </li>
               <li>

@@ -170,37 +170,7 @@ export default function Home() {
                   <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
                 </Link>
 
-                <Link
-                  href="/reservations"
-                  className="hover-target"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '16px 32px',
-                    borderRadius: 9999,
-                    border: '1.5px solid rgba(255,255,255,0.35)',
-                    backdropFilter: 'blur(12px)',
-                    background: 'rgba(255,255,255,0.07)',
-                    color: '#fff',
-                    fontFamily: 'var(--font-jakarta), sans-serif',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    textDecoration: 'none',
-                    transition: 'background 0.25s, border-color 0.25s',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.14)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.6)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.07)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.35)';
-                  }}
-                >
-                  Reserve a Table
-                </Link>
+                
               </div>
             </motion.div>
 
