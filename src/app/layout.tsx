@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Kurale } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 
 const playfair = Playfair_Display({
-  variable: "--font-playfair",
+  variable: "--font-playfair-raw",
   subsets: ["latin"],
   display: "swap",
 });
 
 const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+  variable: "--font-jakarta-raw",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const kurale = Kurale({
+  weight: "400",
+  variable: "--font-kurale-raw",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${jakarta.variable} scroll-smooth`}
+      className={`${playfair.variable} ${jakarta.variable} ${kurale.variable} scroll-smooth`}
     >
       <head>
         <link

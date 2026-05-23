@@ -25,7 +25,7 @@ export default function VisitPage() {
                 </span>
                 <div>
                   <p className="font-label-md text-label-md text-secondary uppercase tracking-wider mb-1 font-semibold">Open Daily</p>
-                  <p className="font-body-md text-body-md text-on-surface font-light">11:00 AM - 11:00 PM</p>
+                  <p className="font-body-md text-body-md text-on-surface font-light">8:30 AM - 11:00 PM</p>
                 </div>
               </div>
               <div className="flex flex-col gap-4 mt-8">

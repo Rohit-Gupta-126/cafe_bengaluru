@@ -53,10 +53,10 @@ export default function Navbar() {
           <motion.div whileHover="hover" className="flex items-center gap-3">
             <KolamLogo 
               className={`transition-colors duration-500 ${showDarkNavbar ? 'text-white' : 'text-secondary'}`} 
-              size={showDarkNavbar ? 48 : 40} 
+              size={showDarkNavbar ? 56 : 48} 
               style={{ transition: 'width 0.5s, height 0.5s, color 0.5s' }} 
             />
-            <span className={`font-playfair font-semibold text-title-lg hidden sm:block tracking-wide transition-colors duration-500 ${
+            <span className={`font-kurale font-semibold text-title-lg hidden sm:block tracking-wide transition-colors duration-500 ${
               showDarkNavbar ? 'text-white' : 'text-secondary'
             }`}>
               Cafe Bengaluru

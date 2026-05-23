@@ -58,14 +58,18 @@
   --spacing-md: 24px;
   --spacing-xs: 4px;
 
-  --font-display-lg: var(--font-playfair), serif;
-  --font-body-lg: var(--font-jakarta), sans-serif;
-  --font-title-lg: var(--font-jakarta), sans-serif;
-  --font-headline-md: var(--font-playfair), serif;
-  --font-headline-lg: var(--font-playfair), serif;
-  --font-headline-lg-mobile: var(--font-playfair), serif;
-  --font-body-md: var(--font-jakarta), sans-serif;
-  --font-label-md: var(--font-jakarta), sans-serif;
+  --font-playfair: var(--font-playfair-raw), serif;
+  --font-jakarta: var(--font-jakarta-raw), sans-serif;
+  --font-kurale: var(--font-kurale-raw), serif;
+
+  --font-display-lg: var(--font-playfair-raw), serif;
+  --font-body-lg: var(--font-jakarta-raw), sans-serif;
+  --font-title-lg: var(--font-jakarta-raw), sans-serif;
+  --font-headline-md: var(--font-playfair-raw), serif;
+  --font-headline-lg: var(--font-playfair-raw), serif;
+  --font-headline-lg-mobile: var(--font-playfair-raw), serif;
+  --font-body-md: var(--font-jakarta-raw), sans-serif;
+  --font-label-md: var(--font-jakarta-raw), sans-serif;
 
   --text-display-lg: 72px;
   --text-display-lg--line-height: 80px;

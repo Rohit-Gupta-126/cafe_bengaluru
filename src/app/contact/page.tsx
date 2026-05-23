@@ -58,13 +58,9 @@ export default function ContactPage() {
             <div className="bg-secondary p-8 md:p-10 rounded-[3rem] shadow-sm relative overflow-hidden group hover-target">
               <h3 className="font-headline-md text-headline-md text-white mb-6">Hours</h3>
               <div className="space-y-4 text-white/90">
-                <div className="flex justify-between items-center border-b border-white/20 pb-4">
-                  <span className="font-body-md text-body-md font-light">Mon - Fri</span>
-                  <span className="font-body-md text-body-md font-medium">7:00 AM - 10:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center pt-2">
-                  <span className="font-body-md text-body-md font-light">Sat - Sun</span>
-                  <span className="font-body-md text-body-md font-medium">8:00 AM - 11:00 PM</span>
+                <div className="flex justify-between items-center pb-2">
+                  <span className="font-body-md text-body-md font-light">Daily</span>
+                  <span className="font-body-md text-body-md font-medium">8:30 AM - 11:00 PM</span>
                 </div>
               </div>
             </div>

@@ -1,11 +1,67 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+
+const TIMELINE_EVENTS = [
+  {
+    id: 'morning',
+    time: '08:30 AM',
+    label: 'The Awakening',
+    title: 'Firing the Tawas & Roasting the Beans',
+    desc: 'The day begins in silence as the heavy cast-iron tawas are heated. The aroma of dark-roasted Chikmagalur beans spreads through the space, and the first slow drops of thick decoction fill the brass filters.',
+    image: '/images/vibe_coffee_beans.png',
+    sensory: {
+      aroma: 'Roasting coffee beans & warm ghee',
+      sound: 'The quiet drip of brass filters',
+      vibe: 'Misty, peaceful, and full of anticipation'
+    }
+  },
+  {
+    id: 'rush',
+    time: '11:00 AM',
+    label: 'The Breakfast Rush',
+    title: 'The Sizzle of Ghee & Golden Dosas',
+    desc: 'The kitchen is alive with activity. Clouds of steam rise from steaming idli pots, and ladlefuls of 14-hour fermented batter hit the tawas with a sharp hiss, crisped to a perfect golden podi crunch.',
+    image: '/images/podi_dosa.png',
+    sensory: {
+      aroma: 'Toasted curry leaves, mustard seeds, and hot sambar',
+      sound: 'The rhythmic scraping of spatulas on iron tawas',
+      vibe: 'Vibrant, fast-paced, and energetic'
+    }
+  },
+  {
+    id: 'kaapi',
+    time: '04:30 PM',
+    label: 'The Kaapi Hour',
+    title: 'The Art of the High-Altitude Pull',
+    desc: 'As the sun dips, the city gathers. Baristas pull filter coffee back and forth from soaring heights between brass dabarahs and tumblers, cooling the coffee and creating a rich, frothed velvet foam.',
+    image: '/images/barista_pour.png',
+    sensory: {
+      aroma: 'Sweet caramelized milk & frothed coffee foam',
+      sound: 'The metallic clatter and ring of brass dabarahs',
+      vibe: 'Social, relaxing, and filled with chatter'
+    }
+  },
+  {
+    id: 'supper',
+    time: '09:00 PM',
+    label: 'The Slow Supper',
+    title: 'Shared Plates & Warm Amber Lights',
+    desc: 'Under the warm amber glow of custom terracotta lights, long conversations linger. Plate-sized Thatte Idlis and warm Saffron Kesari Bath are shared slowly, bringing a comforting end to the day.',
+    image: '/images/vibe_friends.png',
+    sensory: {
+      aroma: 'Cardamom kesari pudding & earthy spices',
+      sound: 'Soft clinking of cutlery and gentle laughter',
+      vibe: 'Warm, intimate, and wabi-sabi cozy'
+    }
+  }
+];
 
 export default function Home() {
   const { scrollY } = useScroll();
+  const [activeTime, setActiveTime] = useState('morning');
 
   // Hero Scroll Effects
   const heroScale = useTransform(scrollY, [0, 800], [1, 1.1]);
@@ -15,11 +71,6 @@ export default function Home() {
   // Founder Note Scroll Effects
   const founderImgY = useTransform(scrollY, [0, 1500], [100, -100]);
   const founderRotate = useTransform(scrollY, [0, 1500], [-5, 5]);
-
-  // Vibe Masonry Scrubs
-  const col1Y = useTransform(scrollY, [1500, 3500], [0, -150]);
-  const col2Y = useTransform(scrollY, [1500, 3500], [100, -50]);
-  const col3Y = useTransform(scrollY, [1500, 3500], [50, -200]);
 
   return (
     <main className="bg-background relative w-full overflow-hidden">
@@ -241,7 +292,7 @@ export default function Home() {
               }}
             >
               Open<br />Daily<br />
-              <strong>11–11</strong>
+              <strong>8:30–11</strong>
             </span>
           </div>
         </motion.div>
@@ -393,49 +444,138 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. THE VIBE (True Asymmetric Masonry with Scrubs) */}
-      <section className="py-32 bg-surface-container-low overflow-hidden" id="vibe">
-        <div className="max-w-container-max mx-auto px-gutter mb-20 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-display-lg text-headline-lg text-primary mb-6"
-          >
-            The <span className="italic text-secondary">Vibe</span>
-          </motion.h2>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto font-light">
-            Earthy tones, tactile textures, and asymmetrical nooks designed for connection.
-          </p>
-        </div>
-        
-        <div className="max-w-container-max mx-auto px-gutter h-[1200px] md:h-[900px] relative">
-          {/* Column 1 */}
-          <motion.div style={{ y: col1Y }} className="absolute left-[5%] top-0 w-[80%] md:w-[28%] flex flex-col gap-8">
-            <div className="rounded-[3rem] overflow-hidden aspect-[4/5] hover-target" data-cursor="explore">
-              <img src="/images/cafe_interior.png" className="w-full h-full object-cover" alt="Interior" />
-            </div>
-            <div className="mask-pebble overflow-hidden aspect-square hover-target" data-cursor="explore">
-              <img src="/images/filter_coffee_vibe.png" className="w-full h-full object-cover" alt="Coffee" />
-            </div>
-          </motion.div>
-          
-          {/* Column 2 */}
-          <motion.div style={{ y: col2Y }} className="absolute right-[5%] md:left-[36%] top-[30%] md:top-[15%] w-[70%] md:w-[35%] flex flex-col gap-12 z-10">
-            <div className="mask-arch-alt overflow-hidden aspect-[3/4] hover-target shadow-2xl" data-cursor="explore">
-              <img src="/images/barista_pour.png" className="w-full h-full object-cover" alt="Barista" />
-            </div>
-          </motion.div>
+      {/* 5. A DAY AT NAMMA CAFE (Interactive Cinematic Timeline) */}
+      <section className="py-32 bg-[#FAF9F6] relative overflow-hidden" id="timeline">
+        <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
 
-          {/* Column 3 */}
-          <motion.div style={{ y: col3Y }} className="absolute left-[10%] md:left-auto md:right-[5%] top-[60%] md:top-[5%] w-[85%] md:w-[25%] flex flex-col gap-8">
-            <div className="rounded-full overflow-hidden aspect-square hover-target" data-cursor="explore">
-              <img src="/images/plated_dish.png" className="w-full h-full object-cover" alt="Dish" />
-            </div>
-            <div className="rounded-[2rem] overflow-hidden aspect-[4/3] hover-target" data-cursor="explore">
-              <img src="/images/story_cafe_interior.png" className="w-full h-full object-cover" alt="Detail" />
-            </div>
-          </motion.div>
+        <div className="max-w-container-max mx-auto px-gutter relative z-10">
+          <div className="max-w-2xl mx-auto mb-16 text-center">
+            <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
+              The Sensory Timeline
+            </span>
+            <h2 className="font-display-lg text-headline-lg text-[#0F0A05] mb-6">
+              A Day at <span className="italic text-[#2E5C31]">Namma Cafe</span>
+            </h2>
+            <p className="font-body-lg text-body-lg text-[#4E3629]/80 font-light leading-relaxed">
+              From the quiet early morning roast to the warm amber glow of late-night tiffins, step into the daily rhythms of our kitchen.
+            </p>
+          </div>
+
+          {/* Timeline Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-20 relative z-10">
+            {TIMELINE_EVENTS.map((event) => {
+              const isActive = activeTime === event.id;
+              return (
+                <button
+                  key={event.id}
+                  onClick={() => setActiveTime(event.id)}
+                  className="relative px-6 py-4 rounded-full font-label-md text-xs uppercase tracking-widest transition-all duration-300 focus:outline-none hover-target cursor-pointer border border-[#4E3629]/15 flex flex-col items-center justify-center min-w-[140px] gap-1"
+                  style={{
+                    color: isActive ? '#faf9f6' : '#4E3629',
+                    background: isActive ? 'transparent' : 'rgba(250,249,246,0.8)',
+                    boxShadow: isActive ? '0 8px 24px rgba(46,92,49,0.12)' : 'none',
+                  }}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeTimeBg"
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: 'linear-gradient(135deg, #2E5C31, #4A2E1B)',
+                        zIndex: -1,
+                      }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                    />
+                  )}
+                  <span className="font-bold text-sm tracking-normal">{event.time}</span>
+                  <span className="text-[9px] opacity-75 font-semibold">{event.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Interactive Cinematic Display */}
+          <div className="relative min-h-[500px]">
+            <AnimatePresence mode="wait">
+              {TIMELINE_EVENTS.map((event) => {
+                if (event.id !== activeTime) return null;
+                return (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
+                  >
+                    {/* Left Column: Big Image Display */}
+                    <div className="lg:col-span-6 relative flex justify-center">
+                      <div className="absolute w-[85%] aspect-square rounded-[3rem] border border-[#2E5C31]/8 pointer-events-none top-[-10px] left-[5%]" />
+                      
+                      <motion.div 
+                        initial={{ scale: 0.95 }}
+                        animate={{ scale: 1 }}
+                        className="w-[90%] aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
+                      >
+                        <img 
+                          src={event.image} 
+                          alt={event.title} 
+                          className="w-full h-full object-cover transition-transform duration-[1500ms] hover:scale-105" 
+                        />
+                      </motion.div>
+                    </div>
+
+                    {/* Right Column: Story & Sensory Highlights */}
+                    <div className="lg:col-span-6 flex flex-col justify-center">
+                      <span className="font-label-md text-xs uppercase tracking-widest text-[#795741] mb-3 font-semibold block">
+                        {event.time} · {event.label}
+                      </span>
+                      <h3 className="font-display-md text-[#0F0A05] text-2xl md:text-3xl font-bold mb-6">
+                        {event.title}
+                      </h3>
+                      <p className="font-body-lg text-[#4E3629]/90 font-light leading-relaxed mb-8 text-base">
+                        {event.desc}
+                      </p>
+
+                      {/* Sensory Details Card */}
+                      <div className="bg-[#FAF9F6]/90 p-8 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm space-y-4">
+                        <h4 className="font-label-md text-[10px] uppercase tracking-widest text-[#795741] font-bold block border-b border-[#2E5C31]/10 pb-2">
+                          Sensory Details
+                        </h4>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-1.5 text-[#2E5C31]">
+                              <span className="material-symbols-outlined text-base" style={{ fontSize: 16 }}>leak_add</span>
+                              <span className="font-label-md text-[10px] uppercase tracking-wider font-semibold">Aroma</span>
+                            </div>
+                            <p className="text-xs text-[#4E3629]/80 font-light">{event.sensory.aroma}</p>
+                          </div>
+
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-1.5 text-[#2E5C31]">
+                              <span className="material-symbols-outlined text-base" style={{ fontSize: 16 }}>volume_up</span>
+                              <span className="font-label-md text-[10px] uppercase tracking-wider font-semibold">Sound</span>
+                            </div>
+                            <p className="text-xs text-[#4E3629]/80 font-light">{event.sensory.sound}</p>
+                          </div>
+
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-1.5 text-[#2E5C31]">
+                              <span className="material-symbols-outlined text-base" style={{ fontSize: 16 }}>wb_twilight</span>
+                              <span className="font-label-md text-[10px] uppercase tracking-wider font-semibold">Vibe</span>
+                            </div>
+                            <p className="text-xs text-[#4E3629]/80 font-light">{event.sensory.vibe}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
@@ -494,7 +634,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-label-md text-label-md text-outline uppercase tracking-widest mb-2">Hours</h4>
-                  <p className="font-body-lg text-body-lg text-on-surface-variant font-light">11:00 AM - 11:00 PM, Daily</p>
+                  <p className="font-body-lg text-body-lg text-on-surface-variant font-light">8:30 AM - 11:00 PM, Daily</p>
                 </div>
                 <div className="pt-6">
                   <a href="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-secondary text-secondary hover:bg-secondary hover:text-white transition-all duration-300 font-label-md text-label-md uppercase tracking-widest hover-target">

@@ -209,10 +209,74 @@ const CATEGORIES: { key: 'all' | 'dosas' | 'idlis' | 'kaapi'; label: string }[] 
   { key: 'kaapi', label: 'Filter Kaapi' },
 ];
 
+const PAIRINGS = [
+  {
+    id: 'spicy',
+    tabLabel: 'Spicy & Intense',
+    emoji: '🌶️',
+    title: 'The Fiery Morning Spark',
+    subtitle: 'Ghee Podi Masala Dosa + Double Filter Kaapi',
+    desc: 'The intense, smoky spice of stone-ground gunpowder podi is coated in golden caramelized ghee on a crispy crepe. Pairing this with a heavy-bodied filter kaapi cuts through the heat, cleansing your palate with sweet, frothy cocoa notes.',
+    tiffinName: 'Ghee Podi Masala Dosa',
+    tiffinDetails: 'Crispy fermented rice-lentil crepe, brushed with pure Salem ghee, dusted with spicy chana and urad dal podi, and stuffed with a spiced potato mash.',
+    brewName: 'Double Filter Kaapi',
+    brewDetails: 'A high-ratio extraction of Chikmagalur Arabica and Robusta peaberry beans blended with 20% chicory, frothed with boiling whole milk from heights.',
+    dishImg: '/images/podi_dosa.png',
+    coffeeImg: '/images/vibe_kaapi_pour.png',
+    flavors: { spicy: 90, sweet: 30, savory: 80, bitter: 70 }
+  },
+  {
+    id: 'soothing',
+    tabLabel: 'Soft & Soothing',
+    emoji: '☁️',
+    title: 'The Comforting Hug',
+    subtitle: 'Ghee Thatte Idli + Single Estate Brew',
+    desc: 'A plate-sized, pillowy-soft steamed rice cake drenched in fresh, aromatic melted ghee. Paired with our smooth, single-estate brew, it offers a gentle, velvety texture that warms the senses and starts the day with pure comfort.',
+    tiffinName: 'Ghee Thatte Idli',
+    tiffinDetails: 'Thick, spongy plate idli steamed in traditional brass plates, served warm with signature coconut chutney and spicy tomato-lentil sambar.',
+    brewName: 'Single Estate Filter Kaapi',
+    brewDetails: 'A smoother, medium-roasted peaberry decoction focusing on delicate floral and nutty notes, served with lightly frothed organic milk.',
+    dishImg: '/images/thatte_idli.png',
+    coffeeImg: '/images/barista_pour.png',
+    flavors: { spicy: 10, sweet: 40, savory: 70, bitter: 40 }
+  },
+  {
+    id: 'recharging',
+    tabLabel: 'Quick & Recharging',
+    emoji: '⚡',
+    title: 'The Midday Recharge',
+    subtitle: 'Mini Ghee Podi Idlis + Classic Kaapi',
+    desc: 'Fourteen bite-sized button idlis tossed in hot ghee and podi powder. This savory, spice-packed snack is paired with a strong, traditional filter coffee to provide an immediate burst of energy and rich flavor.',
+    tiffinName: 'Mini Ghee Podi Idlis',
+    tiffinDetails: 'Mini steamed idli buttons tossed on a hot iron tawa with hot clarified butter, curry leaves, and a generous coating of gun powder spice.',
+    brewName: 'Namma Filter Kaapi',
+    brewDetails: 'Our standard robust blend of dark-roasted estate beans, offering a heavy-bodied cup with a lingering chocolate finish.',
+    dishImg: '/images/mini_idlis.png',
+    coffeeImg: '/images/filter_coffee_vibe.png',
+    flavors: { spicy: 75, sweet: 20, savory: 90, bitter: 65 }
+  },
+  {
+    id: 'indulgent',
+    tabLabel: 'Sweet & Indulgent',
+    emoji: '🍯',
+    title: 'The Golden Treat',
+    subtitle: 'Saffron Kesari Bath + Frothy Filter Coffee',
+    desc: 'Indulge in a melt-in-your-mouth semolina pudding loaded with pure ghee, organic saffron, and toasted cashews. Paired with a piping-hot, bitter-sweet frothy kaapi, the bitter coffee notes provide a perfect counterpoint to the sweet saffron cream.',
+    tiffinName: 'Saffron Kesari Bath',
+    tiffinDetails: 'Roasted fine semolina simmered with sugar syrup, organic Kashmiri saffron, pure ghee, and topped with toasted cashews and golden raisins.',
+    brewName: 'Traditional Frothy Kaapi',
+    brewDetails: 'Freshly pressed brass-filter decoction, frothed high into a bubbling velvet layer in a brass tumbler, with just a hint of raw sugar.',
+    dishImg: '/images/plated_dish.png',
+    coffeeImg: '/images/hero_coffee.png',
+    flavors: { spicy: 0, sweet: 95, savory: 30, bitter: 60 }
+  }
+];
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function MenuPage() {
   const [active, setActive] = useState<'all' | 'dosas' | 'idlis' | 'kaapi'>('all');
+  const [activeCraving, setActiveCraving] = useState('spicy');
   const { scrollY } = useScroll();
 
   // Batch size for incremental reveal
@@ -392,10 +456,184 @@ export default function MenuPage() {
                 fontSize: 11, color: '#F4B41A', lineHeight: 1.3, padding: '0 8px',
               }}
             >
-              Open<br />Daily<br /><strong>11–11</strong>
+              Open<br />Daily<br /><strong>8:30–11</strong>
             </span>
           </div>
         </motion.div>
+      </section>
+
+      {/* ══════════════════════════════════════════════
+           NAMMA TASTE MATCHMAKER (Interactive Flavor Craving Tool)
+      ══════════════════════════════════════════════ */}
+      <section className="py-32 bg-[#FAF9F6] relative overflow-hidden" id="matchmaker">
+        <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
+
+        <div className="max-w-container-max mx-auto px-gutter relative z-10">
+          <div className="max-w-2xl mx-auto mb-16 text-center">
+            <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
+              Namma Pairing Guide
+            </span>
+            <h2 className="font-display-lg text-headline-lg text-[#0F0A05] mb-6">
+              The Taste <span className="italic text-[#2E5C31]">Matchmaker</span>
+            </h2>
+            <p className="font-body-lg text-body-lg text-[#4E3629]/80 font-light leading-relaxed">
+              What craving brings you to our table today? Select below to find your perfect curated tiffin and filter coffee pairing.
+            </p>
+          </div>
+
+          {/* Interactive Craving Tabs */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 relative z-10">
+            {PAIRINGS.map((p) => {
+              const isActive = activeCraving === p.id;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setActiveCraving(p.id)}
+                  className="relative px-6 py-3.5 rounded-full font-label-md text-xs uppercase tracking-widest transition-all duration-300 focus:outline-none hover-target cursor-pointer border border-[#4E3629]/15 flex items-center gap-2"
+                  style={{
+                    color: isActive ? '#faf9f6' : '#4E3629',
+                    fontWeight: isActive ? 600 : 500,
+                    background: isActive ? 'transparent' : 'rgba(250,249,246,0.8)',
+                    boxShadow: isActive ? '0 8px 24px rgba(46,92,49,0.15)' : 'none',
+                  }}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeCravingBg"
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: 'linear-gradient(135deg, #2E5C31, #4A2E1B)',
+                        zIndex: -1,
+                      }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                    />
+                  )}
+                  <span className="text-base">{p.emoji}</span>
+                  <span>{p.tabLabel}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Tab Content Display Area */}
+          <div className="relative min-h-[500px]">
+            <AnimatePresence mode="wait">
+              {PAIRINGS.map((p) => {
+                if (p.id !== activeCraving) return null;
+                return (
+                  <motion.div
+                    key={p.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
+                  >
+                    {/* Left Column: Overlapping Collage */}
+                    <div className="lg:col-span-6 flex justify-center items-center relative min-h-[400px] md:min-h-[480px]">
+                      {/* Accent outline decorative circle */}
+                      <div className="absolute w-[80%] aspect-square rounded-full border border-[#2E5C31]/8 pointer-events-none" />
+
+                      {/* Primary Dish Image (Arch Shape) */}
+                      <motion.div
+                        initial={{ scale: 0.95, y: 10 }}
+                        animate={{ scale: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="w-[70%] aspect-[3/4] mask-arch-alt overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
+                      >
+                        <img
+                          src={p.dishImg}
+                          alt={p.tiffinName}
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        />
+                      </motion.div>
+
+                      {/* Secondary Coffee Image (Circle Shape) */}
+                      <motion.div
+                        initial={{ scale: 0.8, rotate: -8, y: 15 }}
+                        animate={{ scale: 1, rotate: 4, y: 0 }}
+                        transition={{ duration: 0.7, type: 'spring', delay: 0.15 }}
+                        className="absolute bottom-[-16px] right-[8%] w-[42%] aspect-square rounded-full overflow-hidden shadow-2xl z-20 border-4 border-[#FAF9F6] bg-[#FAF9F6]"
+                      >
+                        <img
+                          src={p.coffeeImg}
+                          alt={p.brewName}
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        />
+                      </motion.div>
+
+                      <div className="absolute top-[-10px] left-[10%] bg-[#F4B41A] text-[#0F0A05] text-[10px] tracking-widest uppercase font-bold py-1.5 px-3 rounded-full z-20 shadow-md">
+                        Curated Combo
+                      </div>
+                    </div>
+
+                    {/* Right Column: Pairing Details */}
+                    <div className="lg:col-span-6 flex flex-col justify-center">
+                      <span className="font-label-md text-xs uppercase tracking-widest text-[#795741] mb-3 font-semibold block">
+                        {p.subtitle}
+                      </span>
+                      <h3 className="font-display-md text-[#0F0A05] text-3xl md:text-4xl font-bold mb-6">
+                        {p.title}
+                      </h3>
+                      <p className="font-body-lg text-[#4E3629]/90 font-light leading-relaxed mb-8 text-base">
+                        {p.desc}
+                      </p>
+
+                      {/* Food & Brew Breakdown Cards */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div className="bg-[#FAF9F6]/90 p-6 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
+                          <div className="flex items-center gap-2.5 mb-2">
+                            <span className="material-symbols-outlined text-[#2E5C31] text-lg">restaurant</span>
+                            <h4 className="font-title-lg text-[#2E5C31] text-sm font-semibold uppercase tracking-wider">The Tiffin</h4>
+                          </div>
+                          <p className="font-body-md text-xs text-[#4E3629]/80 font-light leading-relaxed">
+                            <strong>{p.tiffinName}</strong>: {p.tiffinDetails}
+                          </p>
+                        </div>
+
+                        <div className="bg-[#FAF9F6]/90 p-6 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
+                          <div className="flex items-center gap-2.5 mb-2">
+                            <span className="material-symbols-outlined text-[#2E5C31] text-lg">local_cafe</span>
+                            <h4 className="font-title-lg text-[#2E5C31] text-sm font-semibold uppercase tracking-wider">The Brew</h4>
+                          </div>
+                          <p className="font-body-md text-xs text-[#4E3629]/80 font-light leading-relaxed">
+                            <strong>{p.brewName}</strong>: {p.brewDetails}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Flavor Profile Gauges */}
+                      <div className="space-y-4 mb-8 bg-[#FAF9F6]/60 p-6 rounded-[2rem] border border-[#2E5C31]/5">
+                        <h5 className="font-label-md text-[10px] uppercase tracking-widest text-[#795741] font-bold mb-2 block">
+                          Flavor Intensity Profile
+                        </h5>
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                          {Object.entries(p.flavors).map(([flavor, val]) => (
+                            <div key={flavor} className="space-y-1">
+                              <div className="flex justify-between text-xs font-medium">
+                                <span className="capitalize text-[#4E3629]/95 font-semibold">{flavor}</span>
+                                <span className="text-[#2E5C31]">{val}%</span>
+                              </div>
+                              <div className="h-1.5 w-full bg-[#E5DFD3] rounded-full overflow-hidden">
+                                <motion.div
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${val}%` }}
+                                  transition={{ duration: 0.8 }}
+                                  className="h-full bg-gradient-to-r from-[#2E5C31] to-[#F4B41A]"
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </div>
       </section>
 
 
@@ -720,7 +958,7 @@ export default function MenuPage() {
                 margin: 0, maxWidth: 420,
               }}
             >
-              Open daily, 11 AM to 11 PM. Ground Floor, Vanivihar Square, Saheed Nagar, Bhubaneswar.
+              Open daily, 8:30 AM to 11:00 PM. Ground Floor, Vanivihar Square, Saheed Nagar, Bhubaneswar.
             </p>
           </motion.div>
 

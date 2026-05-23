@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="lg:pr-8 flex flex-col gap-6 w-full">
             <Link href="/" className="flex items-center gap-3.5 w-max group hover-target">
               <KolamLogo size={56} className="text-[#fdbb24]/90 transition-transform duration-500 group-hover:rotate-45 group-hover:text-[#fdbb24]" />
-              <span className="font-playfair font-semibold text-title-lg tracking-wider text-[#FAF9F6]/90 group-hover:text-[#fdbb24] transition-colors">
+              <span className="font-kurale font-semibold text-title-lg tracking-wider text-[#FAF9F6]/90 group-hover:text-[#fdbb24] transition-colors">
                 Cafe Bengaluru
               </span>
             </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="flex flex-col gap-5 text-sm text-[#FAF9F6]/60 font-light leading-relaxed">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.12em] text-[#FAF9F6]/40 font-medium mb-1.5">Hours</p>
-                <p className="text-[#FAF9F6]/75">Daily: 11:00 AM - 11:00 PM</p>
+                <p className="text-[#FAF9F6]/75">Daily: 8:30 AM - 11:00 PM</p>
               </div>
               <div>
                 <p className="text-[11px] uppercase tracking-[0.12em] text-[#FAF9F6]/40 font-medium mb-1.5">Get in Touch</p>
