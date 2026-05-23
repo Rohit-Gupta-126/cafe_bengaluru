@@ -64,7 +64,7 @@ export default function Home() {
   const [activeTime, setActiveTime] = useState('morning');
 
   // Hero Scroll Effects
-  const heroScale = useTransform(scrollY, [0, 800], [1, 1.1]);
+  const heroScale = useTransform(scrollY, [0, 800], [1, 1.05]);
   const heroOpacity = useTransform(scrollY, [0, 600], [1, 0]);
   const heroTextY = useTransform(scrollY, [0, 800], [0, 200]);
 

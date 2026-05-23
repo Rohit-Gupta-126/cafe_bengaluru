@@ -8,7 +8,7 @@ export default function AboutClient() {
   const { scrollY } = useScroll();
 
   // Hero parallax
-  const heroScale = useTransform(scrollY, [0, 900], [1, 1.12]);
+  const heroScale = useTransform(scrollY, [0, 900], [1, 1.05]);
   const heroTextY  = useTransform(scrollY, [0, 900], [0, 180]);
   const heroOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
