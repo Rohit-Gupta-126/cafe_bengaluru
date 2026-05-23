@@ -25,7 +25,7 @@ const kurale = Kurale({
 });
 
 export const metadata: Metadata = {
-  title: "Cafe Bengaluru - Immersive Heritage Experience",
+  title: "Cafe Bengaluru",
   description: "Experience the authentic, unapologetic flavors of South India. Traditional filter coffee, ghee podi masala dosa, and soft idlis in a premium, aesthetic setting.",
 };
 
