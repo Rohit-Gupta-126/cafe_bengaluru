@@ -14,12 +14,12 @@ export default function ContactPage() {
         </svg>
       </div>
 
-      <section className="max-w-[1200px] mx-auto mb-16 relative z-10">
+      <section className="max-w-container-max mx-auto mb-16 relative z-10">
         <div className="mb-16 max-w-3xl">
           <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-sm mix-blend-multiply leading-tight">
             Come Say <span className="italic text-secondary">Hello.</span>
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant font-light max-w-[32rem]">
+          <p className="font-body-lg text-body-lg text-on-surface-variant font-light max-w-128">
             Whether it's a catering request, feedback, or just a shared love for filter coffee. We're listening.
           </p>
         </div>

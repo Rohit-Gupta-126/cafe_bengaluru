@@ -296,7 +296,7 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className={`flex flex-col md:flex-row gap-6 md:gap-[48px] items-start ${i < 2 ? 'pb-16 md:pb-20' : ''}`}
+                className={`flex flex-col md:flex-row gap-6 md:gap-12 items-start ${i < 2 ? 'pb-16 md:pb-20' : ''}`}
               >
                 {/* Chapter number bubble */}
                 <div style={{
@@ -322,7 +322,7 @@ export default function AboutClient() {
                 </div>
 
                 {/* Chapter content */}
-                <div className="flex flex-col xl:flex-row gap-8 xl:gap-[48px] items-start xl:items-center w-full">
+                  <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 items-start xl:items-center w-full">
                   <div className="flex-1">
                     <h3 style={{
                       fontFamily: 'var(--font-playfair), serif',
@@ -348,7 +348,7 @@ export default function AboutClient() {
                     </p>
                   </div>
 
-                  <div className="w-full xl:w-[480px] shrink-0 rounded-[20px] overflow-hidden aspect-[4/3] relative">
+                  <div className="w-full xl:w-120 shrink-0 rounded-[20px] overflow-hidden aspect-4/3 relative">
                     <Image
                       src={chapter.img}
                       alt={chapter.alt}

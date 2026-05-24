@@ -15,7 +15,7 @@ export default function OrderPage() {
               Bring the <em className="text-primary italic">Atmosphere</em> Home.
             </h1>
             <div className="h-px w-16 bg-[rgba(193,201,189,0.6)] mb-8"></div>
-            <p className="font-jakarta text-body-lg text-on-surface-variant font-light max-w-[448px] leading-relaxed mb-10">
+            <p className="font-jakarta text-body-lg text-on-surface-variant font-light max-w-112 leading-relaxed mb-10">
               Craving our stone-ground dosas and authentic filter coffee, but prefer to stay in? Order online through our delivery partners and we'll bring the heritage of Cafe Bengaluru straight to your door.
             </p>
 
@@ -54,9 +54,9 @@ export default function OrderPage() {
         </div>
 
         {/* Right Column: Visual */}
-        <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] flex items-center justify-center">
+        <div className="w-full md:w-1/2 relative min-h-100 md:min-h-150 flex items-center justify-center">
           {/* Main Delivery Image */}
-          <div className="w-full h-full aspect-[4/5] md:aspect-auto md:absolute md:inset-0 rounded-[24px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative">
+          <div className="w-full h-full aspect-4/5 md:aspect-auto md:absolute md:inset-0 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative">
             <Image 
               alt="Dosa delivery preparation" 
               src="/images/editorial_dosa.png" 
@@ -66,7 +66,7 @@ export default function OrderPage() {
               quality={90} 
             />
             {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,10,5,0.6)] to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-t from-[rgba(15,10,5,0.6)] to-transparent pointer-events-none" />
           </div>
 
           {/* Floating 'Freshly Packed' Badge */}

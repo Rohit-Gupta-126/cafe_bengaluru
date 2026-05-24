@@ -82,7 +82,7 @@ export default function Navbar() {
                 {active && (
                   <motion.div 
                     layoutId="navUnderline"
-                    className={`absolute bottom-0 left-0 right-0 h-[2px] ${showDarkNavbar ? 'bg-white' : 'bg-primary'}`}
+                    className={`absolute bottom-0 left-0 right-0 h-0.5 ${showDarkNavbar ? 'bg-white' : 'bg-primary'}`}
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}

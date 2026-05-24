@@ -206,11 +206,11 @@ export default function MenuPage() {
       ══════════════════════════════════════════════ */}
       <section className="py-16 md:py-24 bg-[#FAF9F6] relative overflow-hidden" id="matchmaker">
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] bg-size-[24px_24px] opacity-10 z-0 pointer-events-none" />
 
         <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
           <div className="max-w-2xl mx-auto mb-8 text-center">
-            <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-2 block font-semibold">
+            <span className="font-label-md text-label-md uppercase tracking-widest text-secondary mb-2 block font-semibold">
               Namma Pairing Guide
             </span>
             <h2 className="font-display-lg text-headline-lg text-[#0F0A05] mb-4">
@@ -256,7 +256,7 @@ export default function MenuPage() {
           </div>
 
           {/* Tab Content Display Area */}
-          <div className="relative min-h-[400px]">
+          <div className="relative min-h-100">
             <AnimatePresence mode="wait">
               {PAIRINGS.map((p) => {
                 if (p.id !== activeCraving) return null;
@@ -270,7 +270,7 @@ export default function MenuPage() {
                     className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
                   >
                     {/* Left Column: Overlapping Collage */}
-                    <div className="lg:col-span-6 flex justify-center lg:justify-start items-center relative min-h-[300px] md:min-h-[380px]">
+                    <div className="lg:col-span-6 flex justify-center lg:justify-start items-center relative min-h-75 md:min-h-95">
                       {/* Accent outline decorative circle */}
                       <div className="absolute w-[80%] lg:w-[75%] aspect-square rounded-full border border-[#2E5C31]/8 pointer-events-none left-0 lg:left-4" />
 
@@ -279,7 +279,7 @@ export default function MenuPage() {
                         initial={{ scale: 0.95, y: 10 }}
                         animate={{ scale: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="w-[80%] lg:w-[75%] max-h-[300px] md:max-h-[340px] aspect-[3/4] mask-arch overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
+                        className="w-[80%] lg:w-[75%] max-h-75 md:max-h-85 aspect-3/4 mask-arch overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
                       >
                         <Image
                           src={p.dishImg}
@@ -296,7 +296,7 @@ export default function MenuPage() {
                         initial={{ scale: 0.8, rotate: -8, y: 15 }}
                         animate={{ scale: 1, rotate: 4, y: 0 }}
                         transition={{ duration: 0.7, type: 'spring', delay: 0.15 }}
-                        className="absolute bottom-[-16px] right-[4%] lg:right-[6%] w-[38%] aspect-square rounded-full overflow-hidden shadow-2xl z-20 border-4 border-[#FAF9F6] bg-[#FAF9F6]"
+                        className="absolute -bottom-4 right-[4%] lg:right-[6%] w-[38%] aspect-square rounded-full overflow-hidden shadow-2xl z-20 border-4 border-[#FAF9F6] bg-[#FAF9F6]"
                       >
                         <Image
                           src={p.coffeeImg}
@@ -308,14 +308,14 @@ export default function MenuPage() {
                         />
                       </motion.div>
 
-                      <div className="absolute top-[-10px] left-[4%] lg:left-[8%] bg-[#F4B41A] text-[#0F0A05] text-[10px] tracking-widest uppercase font-bold py-1.5 px-3 rounded-full z-20 shadow-md">
+                      <div className="absolute -top-2.5 left-[4%] lg:left-[8%] bg-[#F4B41A] text-[#0F0A05] text-[10px] tracking-widest uppercase font-bold py-1.5 px-3 rounded-full z-20 shadow-md">
                         Curated Combo
                       </div>
                     </div>
 
                     {/* Right Column: Pairing Details */}
                     <div className="lg:col-span-6 flex flex-col justify-center">
-                      <span className="font-label-md text-xs uppercase tracking-widest text-[#795741] mb-2 font-semibold block">
+                      <span className="font-label-md text-xs uppercase tracking-widest text-secondary mb-2 font-semibold block">
                         {p.subtitle}
                       </span>
                       <h3 className="font-display-md text-[#0F0A05] text-3xl md:text-4xl font-bold mb-4">
@@ -327,7 +327,7 @@ export default function MenuPage() {
 
                       {/* Food & Brew Breakdown Cards */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-[#FAF9F6]/90 p-4 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
+                        <div className="bg-[#FAF9F6]/90 p-4 rounded-4xl border border-[#2E5C31]/5 shadow-sm">
                           <div className="flex items-center gap-2.5 mb-2">
                             <span className="material-symbols-outlined text-[#2E5C31] text-lg">restaurant</span>
                             <h4 className="font-title-lg text-[#2E5C31] text-sm font-semibold uppercase tracking-wider">The Tiffin</h4>
@@ -337,7 +337,7 @@ export default function MenuPage() {
                           </p>
                         </div>
 
-                        <div className="bg-[#FAF9F6]/90 p-4 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
+                        <div className="bg-[#FAF9F6]/90 p-4 rounded-4xl border border-[#2E5C31]/5 shadow-sm">
                           <div className="flex items-center gap-2.5 mb-2">
                             <span className="material-symbols-outlined text-[#2E5C31] text-lg">local_cafe</span>
                             <h4 className="font-title-lg text-[#2E5C31] text-sm font-semibold uppercase tracking-wider">The Brew</h4>
@@ -349,8 +349,8 @@ export default function MenuPage() {
                       </div>
 
                       {/* Flavor Profile Gauges */}
-                      <div className="space-y-4 bg-[#FAF9F6]/60 p-4 rounded-[2rem] border border-[#2E5C31]/5">
-                        <h5 className="font-label-md text-[10px] uppercase tracking-widest text-[#795741] font-bold mb-2 block">
+                      <div className="space-y-4 bg-[#FAF9F6]/60 p-4 rounded-4xl border border-[#2E5C31]/5">
+                        <h5 className="font-label-md text-[10px] uppercase tracking-widest text-secondary font-bold mb-2 block">
                           Flavor Intensity Profile
                         </h5>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4">
@@ -365,7 +365,7 @@ export default function MenuPage() {
                                   initial={{ width: 0 }}
                                   animate={{ width: `${val}%` }}
                                   transition={{ duration: 0.8 }}
-                                  className="h-full bg-gradient-to-r from-[#2E5C31] to-[#F4B41A]"
+                                  className="h-full bg-linear-to-r from-[#2E5C31] to-[#F4B41A]"
                                 />
                               </div>
                             </div>
