@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="flex-grow w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pt-[140px] pb-16 relative z-10 overflow-hidden">
+    <main className="grow w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24 mt-24 relative z-10 overflow-hidden">
       <div className="fixed top-1/4 -right-20 opacity-10 pointer-events-none z-[-1] blur-[2px]">
         <svg height="200" viewBox="0 0 24 24" width="200" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#2E5C31"></path>

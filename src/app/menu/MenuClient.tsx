@@ -70,7 +70,7 @@ export default function MenuPage() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0 }}
         >
-          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-32">
+          <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl pb-32">
             {/* Eyebrow */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -204,11 +204,11 @@ export default function MenuPage() {
       {/* ══════════════════════════════════════════════
            NAMMA TASTE MATCHMAKER (Interactive Flavor Craving Tool)
       ══════════════════════════════════════════════ */}
-      <section className="py-md md:py-lg bg-[#FAF9F6] relative overflow-hidden" id="matchmaker">
+      <section className="py-16 md:py-24 bg-[#FAF9F6] relative overflow-hidden" id="matchmaker">
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
           <div className="max-w-2xl mx-auto mb-8 text-center">
             <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-2 block font-semibold">
               Namma Pairing Guide
@@ -407,7 +407,7 @@ export default function MenuPage() {
           className="w-full px-gutter md:px-lg lg:px-xl"
         >
           <div
-            className="w-full max-w-[1600px] mx-auto flex items-center justify-between h-16"
+            className="w-full max-w-400 mx-auto flex items-center justify-between h-16"
           >
             {/* Category tabs */}
             <div style={{ display: 'flex', gap: 4 }}>
@@ -460,7 +460,7 @@ export default function MenuPage() {
         </div>
 
         {/* Section header */}
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pt-16 pb-12">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl pt-16 pb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -508,7 +508,7 @@ export default function MenuPage() {
         </div>
 
         {/* Cards grid */}
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={active}
@@ -527,7 +527,7 @@ export default function MenuPage() {
         
         {/* Load More button */}
         {visibleCount < filtered.length && (
-          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-8">
+          <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-8">
             <LoadMoreButton
               onClick={handleLoadMore}
               remaining={filtered.length - visibleCount}
@@ -568,7 +568,7 @@ export default function MenuPage() {
           The Craft
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl grid grid-cols-1 md:grid-cols-3 gap-0 relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl grid grid-cols-1 md:grid-cols-3 gap-0 relative z-10">
           {[
             {
               icon: 'timer',
@@ -654,7 +654,7 @@ export default function MenuPage() {
         <div style={{ position: 'absolute', left: -60, top: 0, width: 240, height: 240, borderRadius: '50%', background: 'rgba(46,92,49,0.5)', filter: 'blur(48px)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: 0, bottom: 0, width: 360, height: 360, borderRadius: '50%', background: 'rgba(253,187,36,0.06)', filter: 'blur(64px)', pointerEvents: 'none' }} />
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl flex items-center justify-between gap-12 flex-wrap relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl flex items-center justify-between gap-12 flex-wrap relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}

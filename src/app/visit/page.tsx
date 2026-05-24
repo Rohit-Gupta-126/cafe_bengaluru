@@ -7,7 +7,7 @@ export default function VisitPage() {
   return (
     <>
       {/* Main Content */}
-      <main className="grow w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-20 mt-24">
+      <main className="grow w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24 mt-24">
         <div className="flex flex-col md:flex-row gap-16 md:gap-xl xl:gap-24">
           {/* Left Column: Info */}
           <div className="w-full md:w-[40%] flex flex-col justify-center gap-lg">

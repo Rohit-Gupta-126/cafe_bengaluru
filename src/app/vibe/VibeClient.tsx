@@ -66,7 +66,7 @@ export default function VibeClient() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0, pointerEvents: 'none' }}
         >
-          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
+          <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function VibeClient() {
           overflow: 'hidden',
         }}
       >
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -330,7 +330,7 @@ export default function VibeClient() {
           Atmosphere
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -57,7 +57,7 @@ export default function AboutClient() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0, pointerEvents: 'none' }}
         >
-          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
+          <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
             {/* Eye-brow */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -240,7 +240,7 @@ export default function AboutClient() {
         {/* Gold glow top-right */}
         <div style={{ position: 'absolute', top: -120, right: -80, width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,180,26,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24">
 
           {/* Section header */}
           <motion.div
@@ -419,7 +419,7 @@ export default function AboutClient() {
           Our Story
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24 relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24 relative z-10">
 
           {/* Section header */}
           <motion.div
@@ -611,7 +611,7 @@ export default function AboutClient() {
             alignItems: 'center',
           }}
         >
-          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
+          <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl">
             <p
               style={{
                 fontFamily: 'var(--font-jakarta), sans-serif',
