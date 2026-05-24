@@ -15,7 +15,7 @@ export default function OrderPage() {
               Bring the <em className="text-primary italic">Atmosphere</em> Home.
             </h1>
             <div className="h-px w-16 bg-[rgba(193,201,189,0.6)] mb-8"></div>
-            <p className="font-jakarta text-body-lg text-on-surface-variant font-light max-w-md leading-relaxed mb-10">
+            <p className="font-jakarta text-body-lg text-on-surface-variant font-light max-w-[448px] leading-relaxed mb-10">
               Craving our stone-ground dosas and authentic filter coffee, but prefer to stay in? Order online through our delivery partners and we'll bring the heritage of Cafe Bengaluru straight to your door.
             </p>
 
@@ -59,7 +59,7 @@ export default function OrderPage() {
           <div className="w-full h-full aspect-[4/5] md:aspect-auto md:absolute md:inset-0 rounded-[24px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative">
             <Image 
               alt="Dosa delivery preparation" 
-              src="/images/editorial_masala_dosa.png" 
+              src="/images/editorial_dosa.png" 
               fill 
               className="object-cover" 
               sizes="(max-width: 768px) 100vw, 50vw" 
