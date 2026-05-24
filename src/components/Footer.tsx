@@ -23,7 +23,7 @@ export default function Footer() {
                 Cafe Bengaluru
               </span>
             </Link>
-            <p className="text-sm text-[#FAF9F6]/60 leading-relaxed font-light max-w-[250px] w-full">
+            <p className="text-sm text-[#FAF9F6]/60 leading-relaxed font-light max-w-64 w-full">
               Honoring the slow, rhythmic ritual of South Indian filter coffee and traditional kitchen heritage.
             </p>
             {/* Social Icons */}

@@ -372,7 +372,7 @@ export default function Home() {
           >
             {CAROUSEL_ITEMS.map((item, i) => (
               <div key={i} className="shrink-0 w-[80vw] sm:w-75 md:w-90 lg:w-100 xl:w-105 snap-center group hover-target">
-                <div className="h-75 md:h-90 lg:h-100 xl:h-110 rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
+                <div className="h-75 md:h-90 lg:h-100 xl:h-110 rounded-t-5xl rounded-b-md overflow-hidden relative mb-6 mask-arch">
                   <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 400px" quality={85} />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
@@ -454,12 +454,12 @@ export default function Home() {
                   >
                     {/* Left Column: Big Image Display */}
                     <div className="lg:col-span-6 relative flex justify-center">
-                      <div className="absolute w-[85%] aspect-square rounded-[3rem] border border-[#2E5C31]/8 pointer-events-none -top-2.5 left-[5%]" />
+                      <div className="absolute w-[85%] aspect-square rounded-5xl border border-[#2E5C31]/8 pointer-events-none -top-2.5 left-[5%]" />
                       
                       <motion.div 
                         initial={{ scale: 0.95 }}
                         animate={{ scale: 1 }}
-                        className="w-[90%] aspect-4/3 rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
+                        className="w-[90%] aspect-4/3 rounded-5xl overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
                       >
                         <Image 
                           src={event.image} 
@@ -591,7 +591,7 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="w-full aspect-square md:aspect-4/5 max-h-125 lg:max-h-137.5 rounded-[3rem] overflow-hidden shadow-2xl relative z-10 hover-target">
+              <div className="w-full aspect-square md:aspect-4/5 max-h-125 lg:max-h-137.5 rounded-5xl overflow-hidden shadow-2xl relative z-10 hover-target">
                 <Image alt="Map location" fill className="object-cover transition-transform duration-1000 hover:scale-105" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 50vw" quality={85} />
               </div>
               <div className="absolute -bottom-12 -left-12 z-20 bg-surface p-4 pb-12 rounded-2xl shadow-xl transform -rotate-6 border border-surface-variant w-48 md:w-64 pointer-events-none">

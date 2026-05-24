@@ -348,7 +348,7 @@ export default function AboutClient() {
                     </p>
                   </div>
 
-                  <div className="w-full xl:w-120 shrink-0 rounded-[20px] overflow-hidden aspect-4/3 relative">
+                  <div className="w-full xl:w-120 shrink-0 rounded-5xl overflow-hidden aspect-4/3 relative">
                     <Image
                       src={chapter.img}
                       alt={chapter.alt}

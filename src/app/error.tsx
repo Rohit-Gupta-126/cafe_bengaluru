@@ -16,7 +16,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="flex-grow flex flex-col items-center justify-start min-h-[75vh] pt-[128px] pb-[64px] px-gutter text-center relative overflow-hidden">
+    <main className="flex-grow flex flex-col items-center justify-start min-h-screen pt-32 pb-16 px-gutter text-center relative overflow-hidden">
       {/* Background aesthetics */}
       <div className="absolute inset-0 bg-[#FAF9F6] -z-20" />
       <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,0,0,0.03)_1px,_transparent_1px)] [background-size:24px_24px] pointer-events-none -z-10" />
@@ -33,7 +33,7 @@ export default function Error({
         A Slight <em className="text-[#C84B31] font-style-italic">Hiccup.</em>
       </h1>
 
-      <p className="font-jakarta text-body-lg text-on-surface-variant font-light max-w-[448px] mx-auto mb-10 leading-relaxed">
+      <p className="font-jakarta text-body-lg text-on-surface-variant font-light max-w-112 mx-auto mb-10 leading-relaxed">
         Our filter coffee might have spilled. We encountered an unexpected error processing your request. Please try again.
       </p>
 

@@ -10,7 +10,7 @@ export default function VisitPage() {
       <main className="grow w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24 mt-24">
         <div className="flex flex-col md:flex-row gap-16 md:gap-xl xl:gap-24">
           {/* Left Column: Info */}
-          <div className="w-full md:w-[40%] flex flex-col justify-center gap-lg">
+          <div className="w-full md:w-2/5 flex flex-col justify-center gap-lg">
             <div>
               <h1 className="font-display-lg text-headline-lg text-secondary mb-sm leading-tight">Come Say Hello.</h1>
               <div className="h-px w-16 bg-secondary-container mb-md"></div>
@@ -53,7 +53,7 @@ export default function VisitPage() {
             </div>
           </div>
           {/* Right Column: Visuals */}
-          <div className="w-full md:w-[60%] relative">
+          <div className="w-full md:w-3/5 relative">
             {/* Map Container */}
             <div className="w-full aspect-square md:aspect-4/5 max-h-125 lg:max-h-137.5 rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
               <Image alt="Map location" fill className="object-cover" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 60vw" quality={85} />

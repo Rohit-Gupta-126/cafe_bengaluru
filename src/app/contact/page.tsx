@@ -55,7 +55,7 @@ export default function ContactPage() {
               </div>
             </div>
             
-            <div className="bg-secondary p-8 md:p-10 rounded-[3rem] shadow-sm relative overflow-hidden group hover-target">
+            <div className="bg-secondary p-8 md:p-10 rounded-5xl shadow-sm relative overflow-hidden group hover-target">
               <h3 className="font-headline-md text-headline-md text-white mb-6">Hours</h3>
               <div className="space-y-4 text-white/90">
                 <div className="flex justify-between items-center pb-2">
