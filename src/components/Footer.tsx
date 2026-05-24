@@ -29,7 +29,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-5 mt-2">
               <a 
-                href="https://instagram.com/cafebengaluru" 
+                href="https://www.instagram.com/cafebengaluru_bbsr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-[#FAF9F6]/40 hover:text-[#fdbb24] hover:scale-110 transition-all duration-300 hover-target"

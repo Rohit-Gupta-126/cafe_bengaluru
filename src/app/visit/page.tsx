@@ -44,7 +44,7 @@ export default function VisitPage() {
                     <span className="material-symbols-outlined text-[20px]">call</span>
                     +91 98765 43210
                   </a>
-                  <a className="inline-flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-tertiary-container transition-colors border-b border-transparent hover:border-tertiary-fixed-dim pb-1 hover-target" href="https://instagram.com/cafebengaluru" target="_blank" rel="noopener noreferrer">
+                  <a className="inline-flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-tertiary-container transition-colors border-b border-transparent hover:border-tertiary-fixed-dim pb-1 hover-target" href="https://www.instagram.com/cafebengaluru_bbsr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
                     <span className="material-symbols-outlined text-[20px]">photo_camera</span>
                     @cafebengaluru
                   </a>

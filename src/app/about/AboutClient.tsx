@@ -857,7 +857,7 @@ export default function AboutClient() {
             {/* Social row */}
             <div style={{ display: 'flex', gap: 16, marginTop: 8 }}>
               <a
-                href="https://instagram.com/cafebengaluru"
+                href="https://www.instagram.com/cafebengaluru_bbsr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
