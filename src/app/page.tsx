@@ -308,7 +308,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2 rounded-4xl overflow-hidden relative group hover-target"
             >
-              <Image src="/images/authentic_taste.png" alt="Sensory Taste" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
+              <Image src="/images/podi_dosa.png" alt="Crispy Masala Dosa" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-10">
                 <h3 className="font-headline-md text-headline-md text-white mb-2">Stone-Ground Tradition</h3>
                 <p className="font-body-md text-body-md text-white/80 max-w-[448px] font-light">Batters fermented perfectly over 14 hours, yielding dosas with an unmatched golden crunch and soft center.</p>
@@ -336,7 +336,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1 rounded-4xl overflow-hidden relative group hover-target mask-leaf"
             >
-              <Image src="/images/architecture_detail.png" alt="Architecture" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
+              <Image src="/images/cafe_interior.png" alt="Cafe Interior" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
             </motion.div>
           </div>
         </div>
