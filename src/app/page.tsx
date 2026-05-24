@@ -68,7 +68,7 @@ export default function Home() {
           className="absolute inset-x-0 bottom-0 pointer-events-none"
           aria-hidden="false"
         >
-          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
+          <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
             {/* Eye-brow tag */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -243,10 +243,10 @@ export default function Home() {
 
 
       {/* 2. FOUNDER'S NOTE */}
-      <section className="py-16 md:py-24 relative z-20 w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl border-t border-outline-variant/20">
+      <section className="py-16 md:py-24 relative z-20 w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl border-t border-outline-variant/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-5 relative xl:col-span-4 2xl:col-span-4">
-            <motion.div style={{ y: founderImgY, rotate: founderRotate }} className="relative z-10 mask-arch overflow-hidden aspect-[3/4] shadow-2xl hover-target">
+            <motion.div style={{ y: founderImgY, rotate: founderRotate }} className="relative z-10 overflow-hidden aspect-3/4 shadow-2xl hover-target">
               <div className="absolute inset-0 bg-tertiary-fixed-dim/20 mix-blend-multiply pointer-events-none z-10"></div>
               <Image src="/images/story_heritage.png" alt="Founders of Cafe Bengaluru" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" sizes="(max-width: 768px) 100vw, 40vw" quality={85} />
             </motion.div>
@@ -287,7 +287,7 @@ export default function Home() {
       {/* 3. SENSORY EXPERIENCE (Bento Grid) */}
       <section className="py-16 md:py-24 bg-surface-container-lowest relative">
         <div className="absolute inset-0 kolam-faded opacity-30 pointer-events-none z-0"></div>
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -309,9 +309,9 @@ export default function Home() {
               className="md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2 rounded-4xl overflow-hidden relative group hover-target"
             >
               <Image src="/images/authentic_taste.png" alt="Sensory Taste" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-10">
+              <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-10">
                 <h3 className="font-headline-md text-headline-md text-white mb-2">Stone-Ground Tradition</h3>
-                <p className="font-body-md text-body-md text-white/80 max-w-[448px] font-light">Batters fermented perfectly over 14 hours, yielding dosas with an unmatched golden crunch and soft center.</p>
+                <p className="font-body-md text-body-md text-white/80 max-w-112 font-light">Batters fermented perfectly over 14 hours, yielding dosas with an unmatched golden crunch and soft center.</p>
               </div>
             </motion.div>
             
@@ -348,7 +348,7 @@ export default function Home() {
 
       {/* 4. SIGNATURE MENU CAROUSEL */}
       <section className="py-16 md:py-24 relative bg-surface" id="menu">
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl mb-12 flex justify-between items-end">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl mb-12 flex justify-between items-end">
           <motion.h2 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -362,7 +362,7 @@ export default function Home() {
           </Link>
         </div>
         
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl overflow-hidden">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl overflow-hidden">
           <motion.div 
             className="flex gap-8 pb-16 overflow-x-auto hide-scrollbar snap-x snap-mandatory md:justify-center items-center"
             initial={{ opacity: 0, x: 100 }}
@@ -371,8 +371,8 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             {CAROUSEL_ITEMS.map((item, i) => (
-              <div key={i} className="shrink-0 w-[80vw] sm:w-[300px] md:w-[360px] lg:w-[400px] xl:w-[420px] snap-center group hover-target">
-                <div className="h-[300px] md:h-[360px] lg:h-[400px] xl:h-[440px] rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
+              <div key={i} className="shrink-0 w-[80vw] sm:w-75 md:w-90 lg:w-100 xl:w-105 snap-center group hover-target">
+                <div className="h-75 md:h-90 lg:h-100 xl:h-110 rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
                   <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 400px" quality={85} />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
@@ -390,11 +390,11 @@ export default function Home() {
       {/* 5. A DAY AT NAMMA CAFE (Interactive Cinematic Timeline) */}
       <section className="py-16 md:py-24 bg-[#FAF9F6] relative overflow-hidden" id="timeline">
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] bg-size-[24px_24px] opacity-10 z-0 pointer-events-none" />
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
           <div className="max-w-2xl xl:max-w-4xl mx-auto mb-16 text-center">
-            <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
+            <span className="font-label-md text-label-md uppercase tracking-widest text-secondary mb-4 block font-semibold">
               The Sensory Timeline
             </span>
             <h2 className="font-display-lg text-headline-lg lg:text-[64px] 2xl:text-[80px] text-[#0F0A05] mb-6">
@@ -413,7 +413,7 @@ export default function Home() {
                 <button
                   key={event.id}
                   onClick={() => setActiveTime(event.id)}
-                  className="relative px-6 py-4 rounded-full font-label-md text-xs uppercase tracking-widest transition-all duration-300 focus:outline-none hover-target cursor-pointer border border-[#4E3629]/15 flex flex-col items-center justify-center min-w-[140px] gap-1"
+                  className="relative px-6 py-4 rounded-full font-label-md text-xs uppercase tracking-widest transition-all duration-300 focus:outline-none hover-target cursor-pointer border border-[#4E3629]/15 flex flex-col items-center justify-center min-w-35 gap-1"
                   style={{
                     color: isActive ? '#faf9f6' : '#4E3629',
                     background: isActive ? 'transparent' : 'rgba(250,249,246,0.8)',
@@ -439,7 +439,7 @@ export default function Home() {
           </div>
 
           {/* Interactive Cinematic Display */}
-          <div className="relative min-h-[500px]">
+          <div className="relative min-h-125">
             <AnimatePresence mode="wait">
               {TIMELINE_EVENTS.map((event) => {
                 if (event.id !== activeTime) return null;
@@ -454,18 +454,18 @@ export default function Home() {
                   >
                     {/* Left Column: Big Image Display */}
                     <div className="lg:col-span-6 relative flex justify-center">
-                      <div className="absolute w-[85%] aspect-square rounded-[3rem] border border-[#2E5C31]/8 pointer-events-none top-[-10px] left-[5%]" />
+                      <div className="absolute w-[85%] aspect-square rounded-[3rem] border border-[#2E5C31]/8 pointer-events-none -top-2.5 left-[5%]" />
                       
                       <motion.div 
                         initial={{ scale: 0.95 }}
                         animate={{ scale: 1 }}
-                        className="w-[90%] aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
+                        className="w-[90%] aspect-4/3 rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
                       >
                         <Image 
                           src={event.image} 
                           alt={event.title} 
                           fill
-                          className="object-cover transition-transform duration-[1500ms] hover:scale-105"
+                          className="object-cover transition-transform duration-1500 hover:scale-105"
                           sizes="(max-width: 1024px) 100vw, 50vw"
                           quality={85}
                         />
@@ -474,7 +474,7 @@ export default function Home() {
 
                     {/* Right Column: Story & Sensory Highlights */}
                     <div className="lg:col-span-6 flex flex-col justify-center">
-                      <span className="font-label-md text-xs uppercase tracking-widest text-[#795741] mb-3 font-semibold block">
+                      <span className="font-label-md text-xs uppercase tracking-widest text-secondary mb-3 font-semibold block">
                         {event.time} · {event.label}
                       </span>
                       <h3 className="font-display-md text-[#0F0A05] text-2xl md:text-3xl font-bold mb-6">
@@ -485,8 +485,8 @@ export default function Home() {
                       </p>
 
                       {/* Sensory Details Card */}
-                      <div className="bg-[#FAF9F6]/90 p-8 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm space-y-4">
-                        <h4 className="font-label-md text-[10px] uppercase tracking-widest text-[#795741] font-bold block border-b border-[#2E5C31]/10 pb-2">
+                      <div className="bg-[#FAF9F6]/90 p-8 rounded-4xl border border-[#2E5C31]/5 shadow-sm space-y-4">
+                        <h4 className="font-label-md text-[10px] uppercase tracking-widest text-secondary font-bold block border-b border-[#2E5C31]/10 pb-2">
                           Sensory Details
                         </h4>
                         
@@ -530,7 +530,7 @@ export default function Home() {
         <div className="absolute -left-20 top-0 w-64 h-64 bg-primary-container mask-leaf opacity-20 pointer-events-none"></div>
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-tertiary-fixed-dim/10 mask-blob opacity-40 pointer-events-none"></div>
         
-        <div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-gutter md:px-lg lg:px-xl text-center relative z-10">
+        <div className="max-w-400 xl:max-w-6xl 2xl:max-w-7xl mx-auto px-gutter md:px-lg lg:px-xl text-center relative z-10">
           <span className="material-symbols-outlined text-[64px] text-tertiary-fixed-dim mb-8">format_quote</span>
           
           <div className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory">
@@ -557,7 +557,7 @@ export default function Home() {
 
       {/* 7. VISIT US */}
       <section className="py-16 md:py-24 bg-background relative z-20" id="visit">
-        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
+        <div className="w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 xl:gap-32 items-center">
             
             <div className="flex flex-col justify-center">
@@ -591,10 +591,10 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="w-full aspect-square md:aspect-[4/5] max-h-[500px] lg:max-h-[550px] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 hover-target">
+              <div className="w-full aspect-square md:aspect-4/5 max-h-125 lg:max-h-137.5 rounded-[3rem] overflow-hidden shadow-2xl relative z-10 hover-target">
                 <Image alt="Map location" fill className="object-cover transition-transform duration-1000 hover:scale-105" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 50vw" quality={85} />
               </div>
-              <div className="absolute -bottom-12 -left-12 z-20 bg-surface p-4 pb-12 rounded-[1rem] shadow-xl transform -rotate-6 border border-surface-variant w-48 md:w-64 pointer-events-none">
+              <div className="absolute -bottom-12 -left-12 z-20 bg-surface p-4 pb-12 rounded-2xl shadow-xl transform -rotate-6 border border-surface-variant w-48 md:w-64 pointer-events-none">
                 <div className="rounded-sm overflow-hidden aspect-square relative">
                   <Image alt="Cafe exterior" fill className="object-cover grayscale" src="/images/cafe_exterior.png" sizes="256px" quality={75} />
                 </div>
