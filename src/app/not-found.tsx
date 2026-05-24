@@ -3,10 +3,10 @@ import KolamLogo from '@/components/KolamLogo';
 
 export default function NotFound() {
   return (
-    <main className="flex-grow flex flex-col items-center justify-start min-h-screen pt-32 pb-16 px-gutter text-center relative overflow-hidden">
+    <main className="grow flex flex-col items-center justify-start min-h-screen pt-32 pb-16 px-gutter text-center relative overflow-hidden">
       {/* Background aesthetics */}
       <div className="absolute inset-0 bg-[#FAF9F6] -z-20" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(121,87,65,0.04)_1px,_transparent_1px)] [background-size:24px_24px] pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(121,87,65,0.04)_1px,transparent_1px)] bg-size-[24px_24px] pointer-events-none -z-10" />
 
       <div className="text-primary mb-8 animate-pulse">
         <KolamLogo size={120} strokeWidth={4} />
