@@ -7,7 +7,7 @@ export default function VisitPage() {
   return (
     <>
       {/* Main Content */}
-      <main className="flex-grow w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-20 mt-24">
+      <main className="grow w-full max-w-400 mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-20 mt-24">
         <div className="flex flex-col md:flex-row gap-16 md:gap-xl xl:gap-24">
           {/* Left Column: Info */}
           <div className="w-full md:w-[40%] flex flex-col justify-center gap-lg">
@@ -55,15 +55,15 @@ export default function VisitPage() {
           {/* Right Column: Visuals */}
           <div className="w-full md:w-[60%] relative">
             {/* Map Container */}
-            <div className="w-full aspect-square md:aspect-[4/5] max-h-[500px] lg:max-h-[550px] rounded-[24px] overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
+            <div className="w-full aspect-square md:aspect-4/5 max-h-125 lg:max-h-137.5 rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
               <Image alt="Map location" fill className="object-cover" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 60vw" quality={85} />
             </div>
             {/* Overlapping Polaroid */}
-            <div className="absolute -bottom-16 left-4 sm:-bottom-8 sm:-left-4 md:bottom-8 md:-left-12 z-20 bg-surface p-4 pb-12 rounded-[8px] shadow-[0_12px_40px_rgba(74,46,27,0.15)] transform -rotate-3 border border-surface-variant w-[200px] sm:w-[240px] md:w-[280px]">
-              <div className="rounded-[4px] overflow-hidden aspect-square relative">
+            <div className="absolute -bottom-16 left-4 sm:-bottom-8 sm:-left-4 md:bottom-8 md:-left-12 z-20 bg-surface p-4 pb-12 rounded-lg shadow-[0_12px_40px_rgba(74,46,27,0.15)] transform -rotate-3 border border-surface-variant w-50 sm:w-60 md:w-70">
+              <div className="rounded-sm overflow-hidden aspect-square relative">
                 <Image alt="Cafe exterior" fill className="object-cover" src="/images/cafe_exterior.png" sizes="280px" quality={75} />
               </div>
-              <p className="font-headline-md text-[20px] text-center text-secondary mt-4 mb-[-20px] font-medium opacity-80">See you soon</p>
+              <p className="font-headline-md text-[20px] text-center text-secondary mt-4 -mb-5 font-medium opacity-80">See you soon</p>
             </div>
           </div>
         </div>
