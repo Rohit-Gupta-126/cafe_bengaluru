@@ -65,14 +65,7 @@ export default function VibeClient() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0, pointerEvents: 'none' }}
         >
-          <div
-            style={{
-              pointerEvents: 'auto',
-              maxWidth: 1200,
-              margin: '0 auto',
-              padding: '0 32px 80px',
-            }}
-          >
+          <div className="w-full max-w-[1600px] mx-auto px-8 pb-20 pointer-events-auto">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -199,7 +192,7 @@ export default function VibeClient() {
           overflow: 'hidden',
         }}
       >
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>
+        <div className="w-full max-w-[1600px] mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -232,12 +225,7 @@ export default function VibeClient() {
             </h2>
           </motion.div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '48px',
-            alignItems: 'start'
-          }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
             {[
               {
                 title: 'The Brass Bar',
@@ -360,7 +348,7 @@ export default function VibeClient() {
           Atmosphere
         </div>
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 10 }}>
+        <div className="w-full max-w-[1600px] mx-auto px-8 relative z-10">
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -393,15 +381,9 @@ export default function VibeClient() {
             </h2>
           </motion.div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '32px',
-            marginTop: '0px',
-            alignItems: 'center'
-          }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-start">
             {/* Left Column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
+            <div className="flex flex-col gap-12 md:gap-16">
               {/* Gallery Item 1 */}
               <motion.div 
                 className="hover-target"
@@ -481,7 +463,7 @@ export default function VibeClient() {
             </div>
 
             {/* Right Column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '64px', marginTop: '60px' }}>
+            <div className="flex flex-col gap-12 md:gap-16 mt-0 md:mt-[60px]">
               {/* Gallery Item 2 */}
               <motion.div 
                 className="hover-target"

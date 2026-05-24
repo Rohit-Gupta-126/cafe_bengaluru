@@ -336,7 +336,7 @@ export default function MenuPage() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0 }}
         >
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px 120px' }}>
+          <div className="w-full max-w-[1600px] mx-auto px-8 pb-32">
             {/* Eyebrow */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -474,7 +474,7 @@ export default function MenuPage() {
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
 
-        <div className="max-w-container-max mx-auto px-gutter relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter relative z-10">
           <div className="max-w-2xl mx-auto mb-16 text-center">
             <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
               Namma Pairing Guide
@@ -673,12 +673,7 @@ export default function MenuPage() {
           }}
         >
           <div
-            style={{
-              maxWidth: 1200, margin: '0 auto',
-              display: 'flex', alignItems: 'center',
-              justifyContent: 'space-between',
-              height: 64,
-            }}
+            className="w-full max-w-[1600px] mx-auto flex items-center justify-between h-16"
           >
             {/* Category tabs */}
             <div style={{ display: 'flex', gap: 4 }}>
@@ -731,7 +726,7 @@ export default function MenuPage() {
         </div>
 
         {/* Section header */}
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 32px 56px' }}>
+        <div className="w-full max-w-[1600px] mx-auto px-8 pt-16 pb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -779,7 +774,7 @@ export default function MenuPage() {
         </div>
 
         {/* Cards grid */}
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>
+        <div className="w-full max-w-[1600px] mx-auto px-8">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={active}
@@ -787,11 +782,7 @@ export default function MenuPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: 24,
-              }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6"
             >
               {displayedItems.map((item, i) => (
                 <MenuCard key={item.id} item={item} index={i} />
@@ -802,7 +793,7 @@ export default function MenuPage() {
         
         {/* Load More button */}
         {visibleCount < filtered.length && (
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '32px' }}>
+          <div className="w-full max-w-[1600px] mx-auto p-8">
             <LoadMoreButton
               onClick={handleLoadMore}
               remaining={filtered.length - visibleCount}
@@ -843,7 +834,7 @@ export default function MenuPage() {
           The Craft
         </div>
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, position: 'relative', zIndex: 10 }}>
+        <div className="w-full max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 relative z-10">
           {[
             {
               icon: 'timer',
@@ -870,11 +861,7 @@ export default function MenuPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
-              style={{
-                padding: '48px 40px',
-                borderRight: i < 2 ? '1px solid rgba(193,201,189,0.6)' : 'none',
-                display: 'flex', flexDirection: 'column', gap: 12,
-              }}
+              className={`p-10 md:p-12 flex flex-col gap-3 ${i < 2 ? 'border-b md:border-b-0 md:border-r border-[rgba(193,201,189,0.6)]' : ''}`}
             >
               <span
                 className="material-symbols-outlined"
@@ -933,7 +920,7 @@ export default function MenuPage() {
         <div style={{ position: 'absolute', left: -60, top: 0, width: 240, height: 240, borderRadius: '50%', background: 'rgba(46,92,49,0.5)', filter: 'blur(48px)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: 0, bottom: 0, width: 360, height: 360, borderRadius: '50%', background: 'rgba(253,187,36,0.06)', filter: 'blur(64px)', pointerEvents: 'none' }} />
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 48, flexWrap: 'wrap', position: 'relative', zIndex: 10 }}>
+        <div className="w-full max-w-[1600px] mx-auto flex items-center justify-between gap-12 flex-wrap relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}

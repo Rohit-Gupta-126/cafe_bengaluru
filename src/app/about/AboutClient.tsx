@@ -246,7 +246,7 @@ export default function AboutClient() {
         {/* Gold glow top-right */}
         <div style={{ position: 'absolute', top: -120, right: -80, width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,180,26,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px' }}>
+        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 py-16 md:py-24">
 
           {/* Section header */}
           <motion.div
@@ -324,13 +324,7 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '48px 1fr',
-                  gap: '0 48px',
-                  alignItems: 'start',
-                  paddingBottom: i < 2 ? 80 : 0,
-                }}
+                className={`flex flex-col md:flex-row gap-6 md:gap-[48px] items-start ${i < 2 ? 'pb-16 md:pb-20' : ''}`}
               >
                 {/* Chapter number bubble */}
                 <div style={{
@@ -356,8 +350,8 @@ export default function AboutClient() {
                 </div>
 
                 {/* Chapter content */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 48, alignItems: 'center' }}>
-                  <div>
+                <div className="flex flex-col xl:flex-row gap-8 xl:gap-[48px] items-start xl:items-center w-full">
+                  <div className="flex-1">
                     <h3 style={{
                       fontFamily: 'var(--font-playfair), serif',
                       fontSize: 'clamp(22px, 2.5vw, 34px)',
@@ -382,13 +376,7 @@ export default function AboutClient() {
                     </p>
                   </div>
 
-                  {/* Chapter image */}
-                  <div style={{
-                    borderRadius: 20,
-                    overflow: 'hidden',
-                    aspectRatio: '4 / 3',
-                    position: 'relative',
-                  }}>
+                  <div className="w-full xl:w-[480px] shrink-0 rounded-[20px] overflow-hidden aspect-[4/3] relative">
                     <Image
                       src={chapter.img}
                       alt={chapter.alt}
@@ -459,7 +447,7 @@ export default function AboutClient() {
           Our Story
         </div>
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px', position: 'relative', zIndex: 10 }}>
+        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 py-16 md:py-24 relative z-10">
 
           {/* Section header */}
           <motion.div
@@ -493,12 +481,9 @@ export default function AboutClient() {
             </h2>
           </motion.div>
 
-          {/* Stats grid — 4 columns */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 0,
-          }}>
+          {/* Stats grid — responsive columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-[rgba(193,201,189,0.4)]">
+
             {[
               {
                 stat: '14',
@@ -531,13 +516,7 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
-                style={{
-                  padding: '48px 40px',
-                  borderRight: i < 3 ? '1px solid rgba(193,201,189,0.6)' : 'none',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 12,
-                }}
+                className="p-8 md:p-10 flex flex-col gap-3 border-r border-b border-[rgba(193,201,189,0.6)]"
               >
                 {/* Big number */}
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
@@ -587,16 +566,7 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            style={{
-              marginTop: 0,
-              borderTop: '1px solid rgba(193,201,189,0.6)',
-              padding: '48px 40px 0',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 32,
-              flexWrap: 'wrap',
-            }}
+            className="mt-0 pt-12 px-6 flex items-center justify-between gap-8 flex-wrap border-t border-[rgba(193,201,189,0.6)]"
           >
             <p style={{
               fontFamily: 'var(--font-playfair), serif',

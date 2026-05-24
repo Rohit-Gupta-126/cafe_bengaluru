@@ -7,8 +7,8 @@ export default function VisitPage() {
   return (
     <>
       {/* Main Content */}
-      <main className="flex-grow w-full max-w-container-max mx-auto px-4 md:px-gutter py-xl mt-24">
-        <div className="flex flex-col md:flex-row gap-xl">
+      <main className="flex-grow w-full max-w-[1600px] mx-auto px-6 md:px-gutter py-16 md:py-xl mt-24">
+        <div className="flex flex-col md:flex-row gap-16 md:gap-xl xl:gap-24">
           {/* Left Column: Info */}
           <div className="w-full md:w-[40%] flex flex-col justify-center gap-lg">
             <div>
@@ -59,7 +59,7 @@ export default function VisitPage() {
               <Image alt="Map location" fill className="object-cover" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 60vw" quality={85} />
             </div>
             {/* Overlapping Polaroid */}
-            <div className="absolute -bottom-8 -left-8 md:bottom-8 md:-left-12 z-20 bg-surface p-4 pb-12 rounded-[8px] shadow-[0_12px_40px_rgba(74,46,27,0.15)] transform -rotate-3 border border-surface-variant max-w-[240px] md:max-w-[280px]">
+            <div className="absolute -bottom-16 left-4 sm:-bottom-8 sm:-left-4 md:bottom-8 md:-left-12 z-20 bg-surface p-4 pb-12 rounded-[8px] shadow-[0_12px_40px_rgba(74,46,27,0.15)] transform -rotate-3 border border-surface-variant max-w-[200px] sm:max-w-[240px] md:max-w-[280px]">
               <div className="rounded-[4px] overflow-hidden aspect-square relative">
                 <Image alt="Cafe exterior" fill className="object-cover" src="/images/cafe_exterior.png" sizes="280px" quality={75} />
               </div>

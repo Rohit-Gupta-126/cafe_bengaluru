@@ -35,7 +35,7 @@ const TIMELINE_EVENTS = [
   {
     id: 'kaapi',
     time: '04:30 PM',
-    label: 'The Kaapi Hour',
+    label: 'The Filter Coffee Hour',
     title: 'The Art of the High-Altitude Pull',
     desc: 'As the sun dips, the city gathers. Baristas pull filter coffee back and forth from soaring heights between brass dabarahs and tumblers, cooling the coffee and creating a rich, frothed velvet foam.',
     image: '/images/barista_pour.png',
@@ -304,22 +304,22 @@ export default function Home() {
 
 
       {/* 2. FOUNDER'S NOTE */}
-      <section className="py-32 relative z-20 px-gutter max-w-container-max mx-auto border-t border-outline-variant/20">
+      <section className="py-32 relative z-20 px-gutter w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto border-t border-outline-variant/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative xl:col-span-4 2xl:col-span-4">
             <motion.div style={{ y: founderImgY, rotate: founderRotate }} className="relative z-10 mask-arch-alt overflow-hidden aspect-[3/4] shadow-2xl hover-target">
               <div className="absolute inset-0 bg-tertiary-fixed-dim/20 mix-blend-multiply pointer-events-none z-10"></div>
               <Image src="/images/story_heritage.png" alt="Founders of Cafe Bengaluru" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" sizes="(max-width: 768px) 100vw, 40vw" quality={85} />
             </motion.div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary-container mask-blob -z-10 mix-blend-multiply opacity-50 blur-lg"></div>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 flex flex-col justify-center">
+          <div className="lg:col-span-6 lg:col-start-7 xl:col-span-7 xl:col-start-6 flex flex-col justify-center">
             <motion.h2 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
-              className="font-display-lg text-headline-lg text-primary mb-8"
+              className="font-display-lg text-headline-lg lg:text-[72px] 2xl:text-[96px] leading-tight text-primary mb-8"
             >
               A Letter from <br/><span className="italic text-secondary">Home.</span>
             </motion.h2>
@@ -348,26 +348,26 @@ export default function Home() {
       {/* 3. SENSORY EXPERIENCE (Bento Grid) */}
       <section className="py-32 bg-surface-container-lowest relative">
         <div className="absolute inset-0 kolam-faded opacity-30 pointer-events-none z-0"></div>
-        <div className="max-w-container-max mx-auto px-gutter relative z-10">
+        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16 text-center"
           >
-            <h2 className="font-display-lg text-headline-lg text-primary">
+            <h2 className="font-display-lg text-headline-lg lg:text-[64px] 2xl:text-[80px] text-primary">
               The Sensory <span className="italic text-secondary">Experience</span>
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] xl:auto-rows-[400px]">
             {/* Bento Box 1 */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="md:col-span-2 md:row-span-2 rounded-4xl overflow-hidden relative group hover-target"
+              className="md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2 rounded-4xl overflow-hidden relative group hover-target"
             >
               <Image src="/images/authentic_taste.png" alt="Sensory Taste" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-10">
@@ -382,7 +382,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="md:col-span-1 md:row-span-1 rounded-4xl bg-secondary overflow-hidden relative group hover-target p-8 flex flex-col justify-center items-center text-center"
+              className="md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1 rounded-4xl bg-secondary overflow-hidden relative group hover-target p-8 flex flex-col justify-center items-center text-center"
             >
               <span className="material-symbols-outlined text-[48px] text-tertiary-fixed mb-4">coffee_maker</span>
               <h3 className="font-title-lg text-title-lg text-white mb-2">Chikmagalur Beans</h3>
@@ -395,7 +395,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="md:col-span-1 md:row-span-1 rounded-4xl overflow-hidden relative group hover-target mask-leaf"
+              className="md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1 rounded-4xl overflow-hidden relative group hover-target mask-leaf"
             >
               <Image src="/images/architecture_detail.png" alt="Architecture" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
             </motion.div>
@@ -405,12 +405,12 @@ export default function Home() {
 
       {/* 4. SIGNATURE MENU CAROUSEL */}
       <section className="py-32 relative bg-surface" id="menu">
-        <div className="max-w-container-max mx-auto px-gutter mb-12 flex justify-between items-end">
+        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter mb-12 flex justify-between items-end">
           <motion.h2 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="font-display-lg text-headline-lg text-primary"
+            className="font-display-lg text-headline-lg lg:text-[64px] 2xl:text-[80px] text-primary"
           >
             Signature <span className="italic text-secondary">Classics</span>
           </motion.h2>
@@ -432,8 +432,8 @@ export default function Home() {
               { img: '/images/thatte_idli.png', title: 'Ghee Thatte Idli', price: '₹120', desc: 'Thick, ultra-soft, drenched in ghee.' },
               { img: '/images/mini_idlis.png', title: 'Mini Ghee Podi Idlis', price: '₹140', desc: 'Bite-sized perfection tossed in milagai podi.' },
             ].map((item, i) => (
-              <div key={i} className="shrink-0 w-[85vw] md:w-[400px] snap-center group hover-target">
-                <div className="h-[450px] rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
+              <div key={i} className="shrink-0 w-[85vw] md:w-[400px] xl:w-[480px] 2xl:w-[560px] snap-center group hover-target">
+                <div className="h-[450px] xl:h-[550px] 2xl:h-[650px] rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
                   <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 400px" quality={85} />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
@@ -453,12 +453,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
 
-        <div className="max-w-container-max mx-auto px-gutter relative z-10">
-          <div className="max-w-2xl mx-auto mb-16 text-center">
+        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter relative z-10">
+          <div className="max-w-2xl xl:max-w-4xl mx-auto mb-16 text-center">
             <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
               The Sensory Timeline
             </span>
-            <h2 className="font-display-lg text-headline-lg text-[#0F0A05] mb-6">
+            <h2 className="font-display-lg text-headline-lg lg:text-[64px] 2xl:text-[80px] text-[#0F0A05] mb-6">
               A Day at <span className="italic text-[#2E5C31]">Namma Cafe</span>
             </h2>
             <p className="font-body-lg text-body-lg text-[#4E3629]/80 font-light leading-relaxed">
@@ -591,7 +591,7 @@ export default function Home() {
         <div className="absolute -left-20 top-0 w-64 h-64 bg-primary-container mask-leaf opacity-20 pointer-events-none"></div>
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-tertiary-fixed-dim/10 mask-blob opacity-40 pointer-events-none"></div>
         
-        <div className="max-w-4xl mx-auto px-gutter text-center relative z-10">
+        <div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-gutter text-center relative z-10">
           <span className="material-symbols-outlined text-[64px] text-tertiary-fixed-dim mb-8">format_quote</span>
           
           <div className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory">
@@ -618,8 +618,8 @@ export default function Home() {
 
       {/* 7. VISIT US */}
       <section className="py-32 bg-background relative z-20" id="visit">
-        <div className="max-w-container-max mx-auto px-gutter">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 xl:gap-32 items-center">
             
             <div className="flex flex-col justify-center">
               <motion.h2 
