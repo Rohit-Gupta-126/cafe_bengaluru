@@ -167,7 +167,7 @@ const MENU: MenuItem[] = [
   {
     id: 'filter-kaapi',
     category: 'kaapi',
-    title: 'Traditional Filter Kaapi',
+    title: 'Traditional Filter Coffee',
     subtitle: 'Chikmagalur · 20% chicory blend',
     price: 90,
     description:
@@ -179,7 +179,7 @@ const MENU: MenuItem[] = [
   {
     id: 'cold-brew-kaapi',
     category: 'kaapi',
-    title: 'Cold Brew Kaapi',
+    title: 'Cold Brew Coffee',
     subtitle: 'Chikmagalur · 18-hour steep · Chilled',
     price: 120,
     description:
@@ -206,7 +206,7 @@ const CATEGORIES: { key: 'all' | 'dosas' | 'idlis' | 'kaapi'; label: string }[] 
   { key: 'all',   label: 'All' },
   { key: 'dosas', label: 'Dosas' },
   { key: 'idlis', label: 'Idlis' },
-  { key: 'kaapi', label: 'Filter Kaapi' },
+  { key: 'kaapi', label: 'Filter Coffee' },
 ];
 
 const PAIRINGS = [
@@ -215,11 +215,11 @@ const PAIRINGS = [
     tabLabel: 'Spicy & Intense',
     emoji: '🌶️',
     title: 'The Fiery Morning Spark',
-    subtitle: 'Ghee Podi Masala Dosa + Double Filter Kaapi',
-    desc: 'The intense, smoky spice of stone-ground gunpowder podi is coated in golden caramelized ghee on a crispy crepe. Pairing this with a heavy-bodied filter kaapi cuts through the heat, cleansing your palate with sweet, frothy cocoa notes.',
+    subtitle: 'Ghee Podi Masala Dosa + Double Filter Coffee',
+    desc: 'The intense, smoky spice of stone-ground gunpowder podi is coated in golden caramelized ghee on a crispy crepe. Pairing this with a heavy-bodied filter coffee cuts through the heat, cleansing your palate with sweet, frothy cocoa notes.',
     tiffinName: 'Ghee Podi Masala Dosa',
     tiffinDetails: 'Crispy fermented rice-lentil crepe, brushed with pure Salem ghee, dusted with spicy chana and urad dal podi, and stuffed with a spiced potato mash.',
-    brewName: 'Double Filter Kaapi',
+    brewName: 'Double Filter Coffee',
     brewDetails: 'A high-ratio extraction of Chikmagalur Arabica and Robusta peaberry beans blended with 20% chicory, frothed with boiling whole milk from heights.',
     dishImg: '/images/podi_dosa.png',
     coffeeImg: '/images/vibe_kaapi_pour.png',
@@ -234,7 +234,7 @@ const PAIRINGS = [
     desc: 'A plate-sized, pillowy-soft steamed rice cake drenched in fresh, aromatic melted ghee. Paired with our smooth, single-estate brew, it offers a gentle, velvety texture that warms the senses and starts the day with pure comfort.',
     tiffinName: 'Ghee Thatte Idli',
     tiffinDetails: 'Thick, spongy plate idli steamed in traditional brass plates, served warm with signature coconut chutney and spicy tomato-lentil sambar.',
-    brewName: 'Single Estate Filter Kaapi',
+    brewName: 'Single Estate Filter Coffee',
     brewDetails: 'A smoother, medium-roasted peaberry decoction focusing on delicate floral and nutty notes, served with lightly frothed organic milk.',
     dishImg: '/images/thatte_idli.png',
     coffeeImg: '/images/barista_pour.png',
@@ -245,11 +245,11 @@ const PAIRINGS = [
     tabLabel: 'Quick & Recharging',
     emoji: '⚡',
     title: 'The Midday Recharge',
-    subtitle: 'Mini Ghee Podi Idlis + Classic Kaapi',
+    subtitle: 'Mini Ghee Podi Idlis + Classic Coffee',
     desc: 'Fourteen bite-sized button idlis tossed in hot ghee and podi powder. This savory, spice-packed snack is paired with a strong, traditional filter coffee to provide an immediate burst of energy and rich flavor.',
     tiffinName: 'Mini Ghee Podi Idlis',
     tiffinDetails: 'Mini steamed idli buttons tossed on a hot iron tawa with hot clarified butter, curry leaves, and a generous coating of gun powder spice.',
-    brewName: 'Namma Filter Kaapi',
+    brewName: 'Namma Filter Coffee',
     brewDetails: 'Our standard robust blend of dark-roasted estate beans, offering a heavy-bodied cup with a lingering chocolate finish.',
     dishImg: '/images/mini_idlis.png',
     coffeeImg: '/images/filter_coffee_vibe.png',
@@ -261,10 +261,10 @@ const PAIRINGS = [
     emoji: '🍯',
     title: 'The Golden Treat',
     subtitle: 'Saffron Kesari Bath + Frothy Filter Coffee',
-    desc: 'Indulge in a melt-in-your-mouth semolina pudding loaded with pure ghee, organic saffron, and toasted cashews. Paired with a piping-hot, bitter-sweet frothy kaapi, the bitter coffee notes provide a perfect counterpoint to the sweet saffron cream.',
+    desc: 'Indulge in a melt-in-your-mouth semolina pudding loaded with pure ghee, organic saffron, and toasted cashews. Paired with a piping-hot, bitter-sweet frothy coffee, the bitter coffee notes provide a perfect counterpoint to the sweet saffron cream.',
     tiffinName: 'Saffron Kesari Bath',
     tiffinDetails: 'Roasted fine semolina simmered with sugar syrup, organic Kashmiri saffron, pure ghee, and topped with toasted cashews and golden raisins.',
-    brewName: 'Traditional Frothy Kaapi',
+    brewName: 'Traditional Frothy Coffee',
     brewDetails: 'Freshly pressed brass-filter decoction, frothed high into a bubbling velvet layer in a brass tumbler, with just a hint of raw sugar.',
     dishImg: '/images/plated_dish.png',
     coffeeImg: '/images/hero_coffee.png',
@@ -750,7 +750,7 @@ export default function MenuPage() {
                 {active === 'all' && <>Every dish, a <em style={{ color: '#795741' }}>memory.</em></>}
                 {active === 'dosas' && <>Dosas, <em style={{ color: '#795741' }}>done right.</em></>}
                 {active === 'idlis' && <>Idlis of a <em style={{ color: '#795741' }}>different kind.</em></>}
-                {active === 'kaapi' && <>The ritual of <em style={{ color: '#795741' }}>Filter Kaapi.</em></>}
+                {active === 'kaapi' && <>The ritual of <em style={{ color: '#795741' }}>Filter Coffee.</em></>}
               </h2>
             </div>
             <p

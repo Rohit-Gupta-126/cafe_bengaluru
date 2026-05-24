@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import PageLoader from "@/components/PageLoader";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair-raw",
@@ -46,6 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#FAF9F6] paper-grain text-on-surface font-body-md text-body-md antialiased selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed overflow-x-hidden min-h-screen flex flex-col">
+        <PageLoader />
         <CustomCursor />
         <Navbar />
         <main className="flex-grow">
