@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import LoadMoreButton from '../../components/LoadMoreButton';
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -306,10 +307,14 @@ export default function MenuPage() {
       >
         {/* Background with parallax */}
         <motion.div style={{ scale: heroScale, position: 'absolute', inset: 0, transformOrigin: 'center' }}>
-          <img
+          <Image
             alt="Dosa being prepared on a tawa"
             src="/images/editorial_dosa.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            fill
+            loading="eager"
+            quality={90}
+            className="object-cover object-center"
+            sizes="100vw"
           />
         </motion.div>
 
@@ -542,10 +547,13 @@ export default function MenuPage() {
                         transition={{ duration: 0.6 }}
                         className="w-[70%] aspect-[3/4] mask-arch-alt overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
                       >
-                        <img
+                        <Image
                           src={p.dishImg}
                           alt={p.tiffinName}
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                          fill
+                          className="object-cover transition-transform duration-700 hover:scale-105"
+                          sizes="(max-width: 1024px) 70vw, 35vw"
+                          quality={85}
                         />
                       </motion.div>
 
@@ -556,10 +564,13 @@ export default function MenuPage() {
                         transition={{ duration: 0.7, type: 'spring', delay: 0.15 }}
                         className="absolute bottom-[-16px] right-[8%] w-[42%] aspect-square rounded-full overflow-hidden shadow-2xl z-20 border-4 border-[#FAF9F6] bg-[#FAF9F6]"
                       >
-                        <img
+                        <Image
                           src={p.coffeeImg}
                           alt={p.brewName}
-                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                          fill
+                          className="object-cover transition-transform duration-700 hover:scale-105"
+                          sizes="(max-width: 1024px) 42vw, 20vw"
+                          quality={85}
                         />
                       </motion.div>
 
@@ -1079,19 +1090,18 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
           height: isLarge ? '100%' : 260,
         }}
       >
-        <img
+        <Image
           src={item.image}
           alt={item.title}
-          loading="lazy"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 55vw"
+          quality={85}
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
             transition: 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.06)'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)'; }}
+          onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.06)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
         />
         {/* Gradient fade into content area */}
         {isLarge && (

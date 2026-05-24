@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 const TIMELINE_EVENTS = [
@@ -88,11 +89,14 @@ export default function Home() {
           style={{ scale: heroScale }}
           className="absolute inset-0 origin-center"
         >
-          <img
+          <Image
             alt="Filter Coffee Pour"
             src="/images/hero_coffee.png"
-            className="w-full h-full object-cover object-center"
-            style={{ display: 'block' }}
+            fill
+            loading="eager"
+            quality={90}
+            className="object-cover object-center"
+            sizes="100vw"
           />
         </motion.div>
 
@@ -305,7 +309,7 @@ export default function Home() {
           <div className="lg:col-span-5 relative">
             <motion.div style={{ y: founderImgY, rotate: founderRotate }} className="relative z-10 mask-arch-alt overflow-hidden aspect-[3/4] shadow-2xl hover-target">
               <div className="absolute inset-0 bg-tertiary-fixed-dim/20 mix-blend-multiply pointer-events-none z-10"></div>
-              <img src="/images/founder_note.png" alt="Founders of Cafe Bengaluru" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+              <Image src="/images/story_heritage.png" alt="Founders of Cafe Bengaluru" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" sizes="(max-width: 768px) 100vw, 40vw" quality={85} />
             </motion.div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary-container mask-blob -z-10 mix-blend-multiply opacity-50 blur-lg"></div>
           </div>
@@ -365,7 +369,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="md:col-span-2 md:row-span-2 rounded-4xl overflow-hidden relative group hover-target"
             >
-              <img src="/images/authentic_taste.png" alt="Sensory Taste" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <Image src="/images/authentic_taste.png" alt="Sensory Taste" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-10">
                 <h3 className="font-headline-md text-headline-md text-white mb-2">Stone-Ground Tradition</h3>
                 <p className="font-body-md text-body-md text-white/80 max-w-[448px] font-light">Batters fermented perfectly over 14 hours, yielding dosas with an unmatched golden crunch and soft center.</p>
@@ -393,7 +397,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="md:col-span-1 md:row-span-1 rounded-4xl overflow-hidden relative group hover-target mask-leaf"
             >
-              <img src="/images/architecture_detail.png" alt="Architecture" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <Image src="/images/architecture_detail.png" alt="Architecture" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
             </motion.div>
           </div>
         </div>
@@ -430,7 +434,7 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="shrink-0 w-[85vw] md:w-[400px] snap-center group hover-target">
                 <div className="h-[450px] rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 400px" quality={85} />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
                 <div className="flex justify-between items-start mb-2 px-2">
@@ -518,10 +522,13 @@ export default function Home() {
                         animate={{ scale: 1 }}
                         className="w-[90%] aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
                       >
-                        <img 
+                        <Image 
                           src={event.image} 
                           alt={event.title} 
-                          className="w-full h-full object-cover transition-transform duration-[1500ms] hover:scale-105" 
+                          fill
+                          className="object-cover transition-transform duration-[1500ms] hover:scale-105"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          quality={85}
                         />
                       </motion.div>
                     </div>
@@ -646,11 +653,11 @@ export default function Home() {
 
             <div className="relative">
               <div className="w-full aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 hover-target">
-                <img alt="Map location" className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105" src="/images/map_location.png" />
+                <Image alt="Map location" fill className="object-cover transition-transform duration-1000 hover:scale-105" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 50vw" quality={85} />
               </div>
               <div className="absolute -bottom-12 -left-12 z-20 bg-surface p-4 pb-12 rounded-[1rem] shadow-xl transform -rotate-6 border border-surface-variant w-48 md:w-64 pointer-events-none">
-                <div className="rounded-sm overflow-hidden aspect-square">
-                  <img alt="Cafe exterior" className="w-full h-full object-cover grayscale" src="/images/cafe_exterior.png" />
+                <div className="rounded-sm overflow-hidden aspect-square relative">
+                  <Image alt="Cafe exterior" fill className="object-cover grayscale" src="/images/cafe_exterior.png" sizes="256px" quality={75} />
                 </div>
                 <p className="font-display-lg text-title-lg text-center text-primary mt-4 -mb-4 opacity-80 mix-blend-multiply">See you soon</p>
               </div>

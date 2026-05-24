@@ -97,7 +97,7 @@ export default function CustomCursor() {
           width: cursorType === 'explore' ? 96 : hoverActive ? 48 : 20,
           height: cursorType === 'explore' ? 96 : hoverActive ? 48 : 20,
           backgroundColor: cursorType === 'explore' ? 'transparent' : hoverActive ? 'rgba(244, 180, 26, 0.8)' : '#F4B41A',
-          borderColor: cursorType === 'explore' ? '#F4B41A' : 'transparent',
+          borderColor: cursorType === 'explore' ? '#F4B41A' : 'rgba(244,180,26,0)',
           borderWidth: cursorType === 'explore' ? 1.5 : 0,
         }}
         transition={{

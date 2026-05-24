@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function VibeClient() {
@@ -37,10 +38,14 @@ export default function VibeClient() {
         <motion.div
           style={{ scale: heroScale, position: 'absolute', inset: 0, transformOrigin: 'center' }}
         >
-          <img
+          <Image
             alt="Sunlight, Steam, & Conversations"
             src="/images/vibe_hero.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            fill
+            loading="eager"
+            quality={90}
+            className="object-cover object-center"
+            sizes="100vw"
           />
         </motion.div>
 
@@ -268,13 +273,14 @@ export default function VibeClient() {
                   marginBottom: 32,
                   position: 'relative'
                 }}>
-                  <img
+                  <Image
                     src={nook.img}
                     alt={nook.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={85}
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
                       filter: 'grayscale(20%) brightness(0.9)',
                       transition: 'transform 0.7s ease, filter 0.7s ease',
                     }}
@@ -415,10 +421,14 @@ export default function VibeClient() {
                   cursor: 'pointer',
                 }}
               >
-                <img 
+                <Image 
                   alt="Modern cafe interior" 
                   src="/images/vibe_interior.png"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={85}
+                  style={{ transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.05)';
                     e.currentTarget.style.filter = 'grayscale(0%)';
@@ -450,10 +460,14 @@ export default function VibeClient() {
                   cursor: 'pointer',
                 }}
               >
-                <img 
+                <Image 
                   alt="Freshly roasted coffee beans" 
                   src="/images/vibe_coffee_beans.png"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 80vw, 40vw"
+                  quality={85}
+                  style={{ transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.05)';
                     e.currentTarget.style.filter = 'grayscale(0%)';
@@ -488,10 +502,14 @@ export default function VibeClient() {
                   cursor: 'pointer',
                 }}
               >
-                <img 
+                <Image 
                   alt="Traditional South Indian filter coffee pour" 
                   src="/images/vibe_kaapi_pour.png"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 90vw, 45vw"
+                  quality={85}
+                  style={{ transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.05)';
                     e.currentTarget.style.filter = 'grayscale(0%)';
@@ -522,10 +540,14 @@ export default function VibeClient() {
                   cursor: 'pointer',
                 }}
               >
-                <img 
+                <Image 
                   alt="Friends sharing meal at cafe" 
                   src="/images/vibe_friends.png"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={85}
+                  style={{ transition: 'transform 0.5s ease, filter 0.5s ease', filter: 'grayscale(20%)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.05)';
                     e.currentTarget.style.filter = 'grayscale(0%)';

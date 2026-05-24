@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function VisitPage() {
   return (
@@ -55,12 +56,12 @@ export default function VisitPage() {
           <div className="w-full md:w-[60%] relative min-h-[500px] flex items-center justify-center">
             {/* Map Container */}
             <div className="w-full h-[450px] md:h-full rounded-[24px] overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
-              <img alt="Map location" className="w-full h-full object-cover" src="/images/map_location.png" />
+              <Image alt="Map location" fill className="object-cover" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 60vw" quality={85} />
             </div>
             {/* Overlapping Polaroid */}
             <div className="absolute -bottom-8 -left-8 md:bottom-8 md:-left-12 z-20 bg-surface p-4 pb-12 rounded-[8px] shadow-[0_12px_40px_rgba(74,46,27,0.15)] transform -rotate-3 border border-surface-variant max-w-[240px] md:max-w-[280px]">
-              <div className="rounded-[4px] overflow-hidden aspect-square">
-                <img alt="Cafe exterior" className="w-full h-full object-cover" src="/images/cafe_exterior.png" />
+              <div className="rounded-[4px] overflow-hidden aspect-square relative">
+                <Image alt="Cafe exterior" fill className="object-cover" src="/images/cafe_exterior.png" sizes="280px" quality={75} />
               </div>
               <p className="font-headline-md text-[20px] text-center text-secondary mt-4 mb-[-20px] font-medium opacity-80">See you soon</p>
             </div>

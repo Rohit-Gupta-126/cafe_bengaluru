@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function AboutClient() {
@@ -26,10 +27,14 @@ export default function AboutClient() {
         <motion.div
           style={{ scale: heroScale, position: 'absolute', inset: 0, transformOrigin: 'center' }}
         >
-          <img
+          <Image
             alt="Heritage cafe ambience"
             src="/images/story_heritage.png"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            fill
+            loading="eager"
+            quality={90}
+            className="object-cover object-center"
+            sizes="100vw"
           />
         </motion.div>
 
@@ -384,24 +389,24 @@ export default function AboutClient() {
                     aspectRatio: '4 / 3',
                     position: 'relative',
                   }}>
-                    <img
+                    <Image
                       src={chapter.img}
                       alt={chapter.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 360px"
+                      quality={85}
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
                         filter: 'grayscale(30%) brightness(0.85)',
                         transition: 'filter 0.6s ease, transform 0.8s ease',
                       }}
                       onMouseEnter={e => {
-                        const el = e.currentTarget as HTMLElement;
+                        const el = e.currentTarget as HTMLImageElement;
                         el.style.filter = 'grayscale(0%) brightness(1)';
                         el.style.transform = 'scale(1.04)';
                       }}
                       onMouseLeave={e => {
-                        const el = e.currentTarget as HTMLElement;
+                        const el = e.currentTarget as HTMLImageElement;
                         el.style.filter = 'grayscale(30%) brightness(0.85)';
                         el.style.transform = 'scale(1)';
                       }}
@@ -635,10 +640,13 @@ export default function AboutClient() {
           borderTop: '1px solid rgba(193,201,189,0.3)',
         }}
       >
-        <img
+        <Image
           src="/images/story_cafe_interior.png"
           alt="Cafe Bengaluru in Bhubaneswar"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={85}
         />
         {/* Gradient overlay */}
         <div
