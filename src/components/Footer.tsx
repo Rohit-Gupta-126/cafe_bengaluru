@@ -126,8 +126,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 text-[#FAF9F6]/40 text-xs font-light">
           <p className="text-center sm:text-left">&copy; {currentYear} Cafe Bengaluru. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors duration-300 hover-target">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors duration-300 hover-target">Terms of Service</a>
+            <a href="/" className="hover:text-white transition-colors duration-300 hover-target">Privacy Policy</a>
+            <a href="/" className="hover:text-white transition-colors duration-300 hover-target">Terms of Service</a>
           </div>
         </div>
       </div>

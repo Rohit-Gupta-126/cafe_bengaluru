@@ -26,8 +26,32 @@ const kurale = Kurale({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cafe-bengaluru.vercel.app'),
   title: "Cafe Bengaluru",
   description: "Experience the authentic, unapologetic flavors of South India. Traditional filter coffee, ghee podi masala dosa, and soft idlis in a premium, aesthetic setting.",
+  keywords: ["cafe bengaluru", "south indian food", "filter coffee", "masala dosa", "bhubaneswar cafe", "authentic south indian"],
+  openGraph: {
+    title: "Cafe Bengaluru | Authentic South Indian Heritage",
+    description: "Experience the authentic, unapologetic flavors of South India in a premium, aesthetic setting.",
+    url: "https://cafe-bengaluru.vercel.app/",
+    siteName: "Cafe Bengaluru",
+    images: [
+      {
+        url: "/images/vibe_hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Cafe Bengaluru Interior and Coffee",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cafe Bengaluru",
+    description: "Experience the authentic, unapologetic flavors of South India.",
+    images: ["/images/vibe_hero.png"],
+  },
 };
 
 export default function RootLayout({

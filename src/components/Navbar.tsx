@@ -99,7 +99,7 @@ export default function Navbar() {
                 ? 'bg-white text-primary hover:bg-white/90 hover:scale-105'
                 : 'bg-primary text-white hover:bg-primary-container hover:scale-105'
             }`} 
-            href="/menu"
+            href="/order"
           >
             Order Online
           </Link>
@@ -161,7 +161,7 @@ export default function Navbar() {
               >
                 <Link 
                   className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-primary text-white w-full font-label-md text-label-md uppercase tracking-widest shadow-md" 
-                  href="/menu"
+                  href="/order"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Order Online
