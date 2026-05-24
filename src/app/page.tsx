@@ -308,7 +308,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2 rounded-4xl overflow-hidden relative group hover-target"
             >
-              <Image src="/images/podi_dosa.png" alt="Crispy Masala Dosa" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
+              <Image src="/images/authentic_taste.png" alt="Sensory Taste" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 66vw" quality={85} />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-10">
                 <h3 className="font-headline-md text-headline-md text-white mb-2">Stone-Ground Tradition</h3>
                 <p className="font-body-md text-body-md text-white/80 max-w-[448px] font-light">Batters fermented perfectly over 14 hours, yielding dosas with an unmatched golden crunch and soft center.</p>
@@ -321,11 +321,15 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1 rounded-4xl bg-secondary overflow-hidden relative group hover-target p-8 flex flex-col justify-center items-center text-center"
+              className="md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1 rounded-4xl overflow-hidden relative group hover-target p-8 flex flex-col justify-center items-center text-center"
             >
-              <span className="material-symbols-outlined text-[48px] text-tertiary-fixed mb-4">coffee_maker</span>
-              <h3 className="font-title-lg text-title-lg text-white mb-2">Chikmagalur Beans</h3>
-              <p className="font-body-md text-body-md text-white/80 font-light text-sm">Dark roasted, blended with 20% chicory for that intense, heavy-bodied decoction.</p>
+              <Image src="/images/bento_coffee_beans.png" alt="Chikmagalur Coffee Beans" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
+              <div className="absolute inset-0 bg-black/55 transition-colors duration-500 group-hover:bg-black/65 pointer-events-none z-10"></div>
+              <div className="relative z-20 flex flex-col justify-center items-center">
+                <span className="material-symbols-outlined text-[48px] text-tertiary-fixed mb-4">coffee_maker</span>
+                <h3 className="font-title-lg text-title-lg text-white mb-2">Chikmagalur Beans</h3>
+                <p className="font-body-md text-body-md text-white/80 font-light text-sm">Dark roasted, blended with 20% chicory for that intense, heavy-bodied decoction.</p>
+              </div>
             </motion.div>
 
             {/* Bento Box 3 */}
@@ -336,7 +340,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1 rounded-4xl overflow-hidden relative group hover-target mask-leaf"
             >
-              <Image src="/images/cafe_interior.png" alt="Cafe Interior" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
+              <Image src="/images/bento_cafe_interior.png" alt="Cafe Interior" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" quality={85} />
             </motion.div>
           </div>
         </div>
