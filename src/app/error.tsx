@@ -16,7 +16,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="flex-grow flex flex-col items-center justify-start min-h-[75vh] pt-32 pb-16 px-6 text-center relative overflow-hidden">
+    <main className="flex-grow flex flex-col items-center justify-start min-h-[75vh] pt-[128px] pb-[64px] px-gutter text-center relative overflow-hidden">
       {/* Background aesthetics */}
       <div className="absolute inset-0 bg-[#FAF9F6] -z-20" />
       <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,0,0,0.03)_1px,_transparent_1px)] [background-size:24px_24px] pointer-events-none -z-10" />

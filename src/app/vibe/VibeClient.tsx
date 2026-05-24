@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { NOOKS } from '@/data/vibe';
 
 export default function VibeClient() {
   const { scrollY } = useScroll();
@@ -226,26 +227,7 @@ export default function VibeClient() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
-            {[
-              {
-                title: 'The Brass Bar',
-                desc: 'A front-row seat to the rhythmic art of traditional brewing. Brass filters clinking, aromatic steam rising, and the rich scent of dark-roasted chicory blend.',
-                img: '/images/vibe_kaapi_pour.png',
-                offset: 0
-              },
-              {
-                title: 'The Courtyard',
-                desc: 'Dappled sunlight filters through banana leaves onto terracotta tiles. A quiet, open-air sanctuary designed for slow mornings and quiet reflections.',
-                img: '/images/vibe_interior.png',
-                offset: 40
-              },
-              {
-                title: 'The Gather Box',
-                desc: 'Centred around a massive reclaimed timber table under warm amber lights. This is where plates are shared and city conversations naturally intersect.',
-                img: '/images/vibe_friends.png',
-                offset: 80
-              }
-            ].map((nook, i) => (
+            {NOOKS.map((nook, i) => (
               <motion.div
                 key={nook.title}
                 initial={{ opacity: 0, y: 40 }}

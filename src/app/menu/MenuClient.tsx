@@ -5,273 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import LoadMoreButton from '../../components/LoadMoreButton';
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-type MenuItem = {
-  id: string;
-  category: 'all' | 'dosas' | 'idlis' | 'kaapi';
-  title: string;
-  subtitle: string;
-  price: number;
-  description: string;
-  image: string;
-  badge?: string;
-  badgeColor?: string;
-};
-
-const MENU: MenuItem[] = [
-  // ── Dosas ─────────────────────────────────────────────────────────────────
-  {
-    id: 'ghee-podi-masala-dosa',
-    category: 'dosas',
-    title: 'Ghee Podi Masala Dosa',
-    subtitle: 'Stone-ground batter · Gunpowder spice',
-    price: 180,
-    description:
-      'Fermented stone-ground batter crisped on a cast-iron tawa, filled with spiced mashed potato, and generously coated in milagai podi with artisanal ghee.',
-    image: '/images/editorial_dosa.png',
-    badge: 'Signature',
-    badgeColor: '#F4B41A',
-  },
-  {
-    id: 'plain-ghee-dosa',
-    category: 'dosas',
-    title: 'Plain Ghee Dosa',
-    subtitle: 'Classic · Thin & crisp',
-    price: 100,
-    description:
-      'The original. Stone-ground batter spread paper-thin on a cast-iron tawa and finished with a generous ladle of artisanal ghee. Simple, perfect, timeless.',
-    image: '/images/podi_dosa.png',
-  },
-  {
-    id: 'set-dosa',
-    category: 'dosas',
-    title: 'Set Dosa',
-    subtitle: 'Soft & fluffy · Served in threes',
-    price: 130,
-    description:
-      'Three small, pillowy dosas served with coconut chutney and a thick, aromatic sagu. The Bengaluru breakfast staple, done the traditional way.',
-    image: '/images/editorial_set_dosa.png',
-    badge: 'Local Favourite',
-    badgeColor: '#16441c',
-  },
-  {
-    id: 'crispy-rava-dosa',
-    category: 'dosas',
-    title: 'Crispy Rava Dosa',
-    subtitle: 'Semolina · Green chilli · Cumin',
-    price: 150,
-    description:
-      'Lacy, net-textured rava dosa made from fine semolina batter with onions, cumin, green chillies, and curry leaves. Crisp to the very last bite.',
-    image: '/images/editorial_rava_dosa.png',
-  },
-  {
-    id: 'onion-uthappam',
-    category: 'dosas',
-    title: 'Onion Uthappam',
-    subtitle: 'Thick · Caramelised onion topping',
-    price: 140,
-    description:
-      'A thick, soft rice-batter pancake topped with generous amounts of finely chopped onion, tomato, and green chillies, cooked slowly until golden.',
-    image: '/images/editorial_uthappam.png',
-  },
-  {
-    id: 'neer-dosa',
-    category: 'dosas',
-    title: 'Neer Dosa',
-    subtitle: 'Coastal Karnataka · Rice batter · Soft',
-    price: 120,
-    description:
-      'Delicate, lace-thin crepes from the coastal Karnataka tradition. Made from freshly ground raw rice, served soft and folded with coconut chutney.',
-    image: '/images/editorial_neer_dosa.png',
-    badge: 'Regional Special',
-    badgeColor: '#795741',
-  },
-  {
-    id: 'mysore-masala-dosa',
-    category: 'dosas',
-    title: 'Mysore Masala Dosa',
-    subtitle: 'Red chutney inside · Spiced potato filling',
-    price: 160,
-    description:
-      'Spread with house-made spicy red coconut chutney before crisping, filled with well-seasoned aloo masala. A Mysore classic reimagined.',
-    image: '/images/plated_dish.png',
-  },
-  // ── Idlis ─────────────────────────────────────────────────────────────────
-  {
-    id: 'ghee-thatte-idli',
-    category: 'idlis',
-    title: 'Ghee Thatte Idli',
-    subtitle: 'Plate-sized · 14-hour ferment',
-    price: 120,
-    description:
-      'Our version of the iconic Davangere idli — thick, ultra-soft, and drenched in pure artisanal ghee the moment it leaves the steamer.',
-    image: '/images/editorial_thatte_idli.png',
-    badge: 'Bestseller',
-    badgeColor: '#16441c',
-  },
-  {
-    id: 'mini-podi-idlis',
-    category: 'idlis',
-    title: 'Mini Ghee Podi Idlis',
-    subtitle: 'Bite-sized · Milagai podi toss',
-    price: 140,
-    description:
-      'Bite-sized idlis tossed generously in milagai podi and ghee. Perfect for sharing — or not.',
-    image: '/images/editorial_mini_idlis.png',
-  },
-  {
-    id: 'classic-steamed-idlis',
-    category: 'idlis',
-    title: 'Classic Steamed Idlis',
-    subtitle: 'Two pieces · Sambar & 3 chutneys',
-    price: 100,
-    description:
-      'Pillowy idlis from a 14-hour fermented batter, steamed to perfection. Served with piping hot sambar and a trio of coconut, tomato, and mint chutneys.',
-    image: '/images/thatte_idli.png',
-  },
-  {
-    id: 'rava-idli',
-    category: 'idlis',
-    title: 'Rava Idli',
-    subtitle: 'Semolina · Mustard seeds · Roasted cashew',
-    price: 120,
-    description:
-      'A Bengaluru invention born out of necessity. Semolina idlis seasoned with mustard seeds, curry leaves, and topped with roasted cashews. Fluffy and satisfying.',
-    image: '/images/editorial_rava_idli.png',
-    badge: 'Bengaluru Born',
-    badgeColor: '#16441c',
-  },
-  {
-    id: 'kanchipuram-idli',
-    category: 'idlis',
-    title: 'Kanchipuram Idli',
-    subtitle: 'Temple-style · Pepper & cumin',
-    price: 130,
-    description:
-      'Temple-style idli from Tamil Nadu — batter spiced with black pepper, cumin, and ginger, steamed in banana leaf cups for extra fragrance.',
-    image: '/images/mini_idlis.png',
-    badge: "Chef's Special",
-    badgeColor: '#F4B41A',
-  },
-  {
-    id: 'idli-vada-combo',
-    category: 'idlis',
-    title: 'Idli Vada Combo',
-    subtitle: 'Two idlis · One medu vada · Full sambar',
-    price: 150,
-    description:
-      'The quintessential South Indian breakfast — two cloud-soft idlis paired with a crispy medu vada, drenched in house-made tamarind sambar.',
-    image: '/images/authentic_taste.png',
-  },
-  // ── Kaapi ─────────────────────────────────────────────────────────────────
-  {
-    id: 'filter-kaapi',
-    category: 'kaapi',
-    title: 'Traditional Filter Coffee',
-    subtitle: 'Chikmagalur · 20% chicory blend',
-    price: 90,
-    description:
-      'Single-estate Arabica from Chikmagalur dark-roasted and blended with 20% chicory. Decocted slowly, served in a traditional brass dabara-tumbler.',
-    image: '/images/editorial_filter_kaapi.png',
-    badge: 'Classic',
-    badgeColor: '#795741',
-  },
-  {
-    id: 'cold-brew-kaapi',
-    category: 'kaapi',
-    title: 'Cold Brew Coffee',
-    subtitle: 'Chikmagalur · 18-hour steep · Chilled',
-    price: 120,
-    description:
-      'Our single-estate Arabica cold-steeped for 18 hours. Smooth and rich with notes of dark chocolate and subtle fruit — served over hand-cracked ice.',
-    image: '/images/editorial_cold_brew.png',
-    badge: 'Seasonal',
-    badgeColor: '#795741',
-  },
-  {
-    id: 'cafe-bengaluru-special',
-    category: 'kaapi',
-    title: 'Cafe Bengaluru Special',
-    subtitle: 'Double decoction · Extra strong · Full milk',
-    price: 110,
-    description:
-      'Double-strength decoction made with an extra-dark roast, mixed with full-fat milk pulled to a frothy tumbler. Our boldest, most uncompromising brew.',
-    image: '/images/barista_pour.png',
-    badge: 'House Favourite',
-    badgeColor: '#16441c',
-  },
-];
-
-const CATEGORIES: { key: 'all' | 'dosas' | 'idlis' | 'kaapi'; label: string }[] = [
-  { key: 'all',   label: 'All' },
-  { key: 'dosas', label: 'Dosas' },
-  { key: 'idlis', label: 'Idlis' },
-  { key: 'kaapi', label: 'Filter Coffee' },
-];
-
-const PAIRINGS = [
-  {
-    id: 'spicy',
-    tabLabel: 'Spicy & Intense',
-    emoji: '🌶️',
-    title: 'The Fiery Morning Spark',
-    subtitle: 'Ghee Podi Masala Dosa + Double Filter Coffee',
-    desc: 'The intense, smoky spice of stone-ground gunpowder podi is coated in golden caramelized ghee on a crispy crepe. Pairing this with a heavy-bodied filter coffee cuts through the heat, cleansing your palate with sweet, frothy cocoa notes.',
-    tiffinName: 'Ghee Podi Masala Dosa',
-    tiffinDetails: 'Crispy fermented rice-lentil crepe, brushed with pure Salem ghee, dusted with spicy chana and urad dal podi, and stuffed with a spiced potato mash.',
-    brewName: 'Double Filter Coffee',
-    brewDetails: 'A high-ratio extraction of Chikmagalur Arabica and Robusta peaberry beans blended with 20% chicory, frothed with boiling whole milk from heights.',
-    dishImg: '/images/podi_dosa.png',
-    coffeeImg: '/images/vibe_kaapi_pour.png',
-    flavors: { spicy: 90, sweet: 30, savory: 80, bitter: 70 }
-  },
-  {
-    id: 'soothing',
-    tabLabel: 'Soft & Soothing',
-    emoji: '☁️',
-    title: 'The Comforting Hug',
-    subtitle: 'Ghee Thatte Idli + Single Estate Brew',
-    desc: 'A plate-sized, pillowy-soft steamed rice cake drenched in fresh, aromatic melted ghee. Paired with our smooth, single-estate brew, it offers a gentle, velvety texture that warms the senses and starts the day with pure comfort.',
-    tiffinName: 'Ghee Thatte Idli',
-    tiffinDetails: 'Thick, spongy plate idli steamed in traditional brass plates, served warm with signature coconut chutney and spicy tomato-lentil sambar.',
-    brewName: 'Single Estate Filter Coffee',
-    brewDetails: 'A smoother, medium-roasted peaberry decoction focusing on delicate floral and nutty notes, served with lightly frothed organic milk.',
-    dishImg: '/images/thatte_idli.png',
-    coffeeImg: '/images/barista_pour.png',
-    flavors: { spicy: 10, sweet: 40, savory: 70, bitter: 40 }
-  },
-  {
-    id: 'recharging',
-    tabLabel: 'Quick & Recharging',
-    emoji: '⚡',
-    title: 'The Midday Recharge',
-    subtitle: 'Mini Ghee Podi Idlis + Classic Coffee',
-    desc: 'Fourteen bite-sized button idlis tossed in hot ghee and podi powder. This savory, spice-packed snack is paired with a strong, traditional filter coffee to provide an immediate burst of energy and rich flavor.',
-    tiffinName: 'Mini Ghee Podi Idlis',
-    tiffinDetails: 'Mini steamed idli buttons tossed on a hot iron tawa with hot clarified butter, curry leaves, and a generous coating of gun powder spice.',
-    brewName: 'Namma Filter Coffee',
-    brewDetails: 'Our standard robust blend of dark-roasted estate beans, offering a heavy-bodied cup with a lingering chocolate finish.',
-    dishImg: '/images/mini_idlis.png',
-    coffeeImg: '/images/filter_coffee_vibe.png',
-    flavors: { spicy: 75, sweet: 20, savory: 90, bitter: 65 }
-  },
-  {
-    id: 'indulgent',
-    tabLabel: 'Sweet & Indulgent',
-    emoji: '🍯',
-    title: 'The Golden Treat',
-    subtitle: 'Saffron Kesari Bath + Frothy Filter Coffee',
-    desc: 'Indulge in a melt-in-your-mouth semolina pudding loaded with pure ghee, organic saffron, and toasted cashews. Paired with a piping-hot, bitter-sweet frothy coffee, the bitter coffee notes provide a perfect counterpoint to the sweet saffron cream.',
-    tiffinName: 'Saffron Kesari Bath',
-    tiffinDetails: 'Roasted fine semolina simmered with sugar syrup, organic Kashmiri saffron, pure ghee, and topped with toasted cashews and golden raisins.',
-    brewName: 'Traditional Frothy Coffee',
-    brewDetails: 'Freshly pressed brass-filter decoction, frothed high into a bubbling velvet layer in a brass tumbler, with just a hint of raw sugar.',
-    dishImg: '/images/plated_dish.png',
-    coffeeImg: '/images/hero_coffee.png',
-    flavors: { spicy: 0, sweet: 95, savory: 30, bitter: 60 }
-  }
-];
+import { MenuItem, MENU, CATEGORIES, PAIRINGS } from '@/data/menu';
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -281,7 +15,7 @@ export default function MenuPage() {
   const { scrollY } = useScroll();
 
   // Batch size for incremental reveal
-  const BATCH_SIZE = 6;
+  const BATCH_SIZE = 5;
   const [visibleCount, setVisibleCount] = useState<number>(BATCH_SIZE);
 
   // Hero parallax
@@ -292,7 +26,7 @@ export default function MenuPage() {
   const filtered = active === 'all' ? MENU : MENU.filter(i => i.category === active);
   const displayedItems = filtered.slice(0, visibleCount);
   const handleLoadMore = () => {
-    setVisibleCount(prev => Math.min(prev + BATCH_SIZE, filtered.length));
+    setVisibleCount(prev => Math.min(prev + 6, filtered.length));
   };
 
   return (
@@ -336,7 +70,7 @@ export default function MenuPage() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0 }}
         >
-          <div className="w-full max-w-[1600px] mx-auto px-8 pb-32">
+          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-32">
             {/* Eyebrow */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -470,16 +204,16 @@ export default function MenuPage() {
       {/* ══════════════════════════════════════════════
            NAMMA TASTE MATCHMAKER (Interactive Flavor Craving Tool)
       ══════════════════════════════════════════════ */}
-      <section className="py-32 bg-[#FAF9F6] relative overflow-hidden" id="matchmaker">
+      <section className="py-md md:py-lg bg-[#FAF9F6] relative overflow-hidden" id="matchmaker">
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
 
-        <div className="w-full max-w-[1600px] mx-auto px-gutter relative z-10">
-          <div className="max-w-2xl mx-auto mb-16 text-center">
-            <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
+          <div className="max-w-2xl mx-auto mb-8 text-center">
+            <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-2 block font-semibold">
               Namma Pairing Guide
             </span>
-            <h2 className="font-display-lg text-headline-lg text-[#0F0A05] mb-6">
+            <h2 className="font-display-lg text-headline-lg text-[#0F0A05] mb-4">
               The Taste <span className="italic text-[#2E5C31]">Matchmaker</span>
             </h2>
             <p className="font-body-lg text-body-lg text-[#4E3629]/80 font-light leading-relaxed">
@@ -488,7 +222,7 @@ export default function MenuPage() {
           </div>
 
           {/* Interactive Craving Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 relative z-10">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 relative z-10">
             {PAIRINGS.map((p) => {
               const isActive = activeCraving === p.id;
               return (
@@ -522,7 +256,7 @@ export default function MenuPage() {
           </div>
 
           {/* Tab Content Display Area */}
-          <div className="relative min-h-[500px]">
+          <div className="relative min-h-[400px]">
             <AnimatePresence mode="wait">
               {PAIRINGS.map((p) => {
                 if (p.id !== activeCraving) return null;
@@ -536,23 +270,23 @@ export default function MenuPage() {
                     className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
                   >
                     {/* Left Column: Overlapping Collage */}
-                    <div className="lg:col-span-6 flex justify-center items-center relative min-h-[400px] md:min-h-[480px]">
+                    <div className="lg:col-span-6 flex justify-center lg:justify-start items-center relative min-h-[300px] md:min-h-[380px]">
                       {/* Accent outline decorative circle */}
-                      <div className="absolute w-[80%] aspect-square rounded-full border border-[#2E5C31]/8 pointer-events-none" />
+                      <div className="absolute w-[80%] lg:w-[75%] aspect-square rounded-full border border-[#2E5C31]/8 pointer-events-none left-0 lg:left-4" />
 
                       {/* Primary Dish Image (Arch Shape) */}
                       <motion.div
                         initial={{ scale: 0.95, y: 10 }}
                         animate={{ scale: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="w-[70%] aspect-[3/4] mask-arch-alt overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
+                        className="w-[80%] lg:w-[75%] max-h-[300px] md:max-h-[340px] aspect-[3/4] mask-arch overflow-hidden shadow-2xl relative z-10 border border-[#2E5C31]/10 bg-[#FAF9F6]"
                       >
                         <Image
                           src={p.dishImg}
                           alt={p.tiffinName}
                           fill
                           className="object-cover transition-transform duration-700 hover:scale-105"
-                          sizes="(max-width: 1024px) 70vw, 35vw"
+                          sizes="(max-width: 1024px) 80vw, 35vw"
                           quality={85}
                         />
                       </motion.div>
@@ -562,38 +296,38 @@ export default function MenuPage() {
                         initial={{ scale: 0.8, rotate: -8, y: 15 }}
                         animate={{ scale: 1, rotate: 4, y: 0 }}
                         transition={{ duration: 0.7, type: 'spring', delay: 0.15 }}
-                        className="absolute bottom-[-16px] right-[8%] w-[42%] aspect-square rounded-full overflow-hidden shadow-2xl z-20 border-4 border-[#FAF9F6] bg-[#FAF9F6]"
+                        className="absolute bottom-[-16px] right-[4%] lg:right-[6%] w-[38%] aspect-square rounded-full overflow-hidden shadow-2xl z-20 border-4 border-[#FAF9F6] bg-[#FAF9F6]"
                       >
                         <Image
                           src={p.coffeeImg}
                           alt={p.brewName}
                           fill
                           className="object-cover transition-transform duration-700 hover:scale-105"
-                          sizes="(max-width: 1024px) 42vw, 20vw"
+                          sizes="(max-width: 1024px) 38vw, 18vw"
                           quality={85}
                         />
                       </motion.div>
 
-                      <div className="absolute top-[-10px] left-[10%] bg-[#F4B41A] text-[#0F0A05] text-[10px] tracking-widest uppercase font-bold py-1.5 px-3 rounded-full z-20 shadow-md">
+                      <div className="absolute top-[-10px] left-[4%] lg:left-[8%] bg-[#F4B41A] text-[#0F0A05] text-[10px] tracking-widest uppercase font-bold py-1.5 px-3 rounded-full z-20 shadow-md">
                         Curated Combo
                       </div>
                     </div>
 
                     {/* Right Column: Pairing Details */}
                     <div className="lg:col-span-6 flex flex-col justify-center">
-                      <span className="font-label-md text-xs uppercase tracking-widest text-[#795741] mb-3 font-semibold block">
+                      <span className="font-label-md text-xs uppercase tracking-widest text-[#795741] mb-2 font-semibold block">
                         {p.subtitle}
                       </span>
-                      <h3 className="font-display-md text-[#0F0A05] text-3xl md:text-4xl font-bold mb-6">
+                      <h3 className="font-display-md text-[#0F0A05] text-3xl md:text-4xl font-bold mb-4">
                         {p.title}
                       </h3>
-                      <p className="font-body-lg text-[#4E3629]/90 font-light leading-relaxed mb-8 text-base">
+                      <p className="font-body-lg text-[#4E3629]/90 font-light leading-relaxed mb-6 text-base">
                         {p.desc}
                       </p>
 
                       {/* Food & Brew Breakdown Cards */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div className="bg-[#FAF9F6]/90 p-6 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div className="bg-[#FAF9F6]/90 p-4 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
                           <div className="flex items-center gap-2.5 mb-2">
                             <span className="material-symbols-outlined text-[#2E5C31] text-lg">restaurant</span>
                             <h4 className="font-title-lg text-[#2E5C31] text-sm font-semibold uppercase tracking-wider">The Tiffin</h4>
@@ -603,7 +337,7 @@ export default function MenuPage() {
                           </p>
                         </div>
 
-                        <div className="bg-[#FAF9F6]/90 p-6 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
+                        <div className="bg-[#FAF9F6]/90 p-4 rounded-[2rem] border border-[#2E5C31]/5 shadow-sm">
                           <div className="flex items-center gap-2.5 mb-2">
                             <span className="material-symbols-outlined text-[#2E5C31] text-lg">local_cafe</span>
                             <h4 className="font-title-lg text-[#2E5C31] text-sm font-semibold uppercase tracking-wider">The Brew</h4>
@@ -615,7 +349,7 @@ export default function MenuPage() {
                       </div>
 
                       {/* Flavor Profile Gauges */}
-                      <div className="space-y-4 mb-8 bg-[#FAF9F6]/60 p-6 rounded-[2rem] border border-[#2E5C31]/5">
+                      <div className="space-y-4 bg-[#FAF9F6]/60 p-4 rounded-[2rem] border border-[#2E5C31]/5">
                         <h5 className="font-label-md text-[10px] uppercase tracking-widest text-[#795741] font-bold mb-2 block">
                           Flavor Intensity Profile
                         </h5>
@@ -669,8 +403,8 @@ export default function MenuPage() {
             background: 'rgba(250,249,246,0.92)',
             backdropFilter: 'blur(16px)',
             borderBottom: '1px solid rgba(193,201,189,0.3)',
-            padding: '0 32px',
           }}
+          className="w-full px-gutter md:px-lg lg:px-xl"
         >
           <div
             className="w-full max-w-[1600px] mx-auto flex items-center justify-between h-16"
@@ -726,7 +460,7 @@ export default function MenuPage() {
         </div>
 
         {/* Section header */}
-        <div className="w-full max-w-[1600px] mx-auto px-8 pt-16 pb-12">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pt-16 pb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -774,7 +508,7 @@ export default function MenuPage() {
         </div>
 
         {/* Cards grid */}
-        <div className="w-full max-w-[1600px] mx-auto px-8">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={active}
@@ -793,7 +527,7 @@ export default function MenuPage() {
         
         {/* Load More button */}
         {visibleCount < filtered.length && (
-          <div className="w-full max-w-[1600px] mx-auto p-8">
+          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-8">
             <LoadMoreButton
               onClick={handleLoadMore}
               remaining={filtered.length - visibleCount}
@@ -834,7 +568,7 @@ export default function MenuPage() {
           The Craft
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl grid grid-cols-1 md:grid-cols-3 gap-0 relative z-10">
           {[
             {
               icon: 'timer',
@@ -920,7 +654,7 @@ export default function MenuPage() {
         <div style={{ position: 'absolute', left: -60, top: 0, width: 240, height: 240, borderRadius: '50%', background: 'rgba(46,92,49,0.5)', filter: 'blur(48px)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: 0, bottom: 0, width: 360, height: 360, borderRadius: '50%', background: 'rgba(253,187,36,0.06)', filter: 'blur(64px)', pointerEvents: 'none' }} />
 
-        <div className="w-full max-w-[1600px] mx-auto flex items-center justify-between gap-12 flex-wrap relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl flex items-center justify-between gap-12 flex-wrap relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1184,8 +918,9 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
             ₹{item.price}
           </span>
 
-          <button
+          <Link
             id={`order-${item.id}`}
+            href="/order"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '12px 24px', borderRadius: 9999,
@@ -1194,6 +929,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
               fontFamily: 'var(--font-jakarta), sans-serif',
               fontSize: 12, fontWeight: 700,
               letterSpacing: '0.12em', textTransform: 'uppercase',
+              textDecoration: 'none',
               transition: 'background 0.25s, transform 0.2s',
             }}
             onMouseEnter={e => {
@@ -1209,7 +945,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
           >
             Order Now
             <span className="material-symbols-outlined" style={{ fontSize: 16 }}>add</span>
-          </button>
+          </Link>
         </div>
       </div>
     </motion.div>

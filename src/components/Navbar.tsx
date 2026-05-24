@@ -47,7 +47,7 @@ export default function Navbar() {
           : 'bg-surface/98 backdrop-blur-md border-b border-secondary/10 py-3 shadow-[0_4px_20px_rgba(74,46,27,0.08)]'
       }`}
     >
-      <div className="flex justify-between items-center px-4 md:px-lg xl:max-w-screen-xl 2xl:max-w-[1600px] mx-auto w-full">
+      <div className="flex justify-between items-center w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
         {/* Brand / Logo */}
         <Link href="/" className="shrink-0 hover-target">
           <motion.div whileHover="hover" className="flex items-center gap-3">

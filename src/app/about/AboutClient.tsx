@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { JOURNEY_CHAPTERS } from '@/data/about';
 
 export default function AboutClient() {
   const { scrollY } = useScroll();
@@ -56,14 +57,7 @@ export default function AboutClient() {
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity, position: 'absolute', insetInline: 0, bottom: 0, pointerEvents: 'none' }}
         >
-          <div
-            style={{
-              pointerEvents: 'auto',
-              maxWidth: 1200,
-              margin: '0 auto',
-              padding: '0 32px 80px',
-            }}
-          >
+          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
             {/* Eye-brow */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -246,7 +240,7 @@ export default function AboutClient() {
         {/* Gold glow top-right */}
         <div style={{ position: 'absolute', top: -120, right: -80, width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,180,26,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 py-16 md:py-24">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24">
 
           {/* Section header */}
           <motion.div
@@ -295,29 +289,7 @@ export default function AboutClient() {
               pointerEvents: 'none',
             }} />
 
-            {[
-              {
-                num: '01',
-                heading: 'We Packed the Stone Grinders.',
-                body: 'Every grain of rice. Every lentil measured by memory, not measurement. The stone grinders that our grandmothers used — carried across state lines because the batter they produced simply could not be replicated any other way.',
-                img: '/images/story_journey_path.png',
-                alt: 'Stone grinder heritage',
-              },
-              {
-                num: '02',
-                heading: 'We Sourced the Exact Beans.',
-                body: 'Single-estate Arabica from Chikmagalur, dark-roasted and blended with 20% chicory. The decoction must be heavy-bodied, intensely aromatic, and capable of standing tall even when diluted with frothed milk.',
-                img: '/images/filter_coffee_vibe.png',
-                alt: 'Chikmagalur filter coffee',
-              },
-              {
-                num: '03',
-                heading: 'We Opened the Doors.',
-                body: 'Vanivihar Square, Saheed Nagar. A space designed with earthy tones, tactile textures, and the low hum of conversation — a small corner of Bengaluru planted firmly in Bhubaneswar.',
-                img: '/images/cafe_interior.png',
-                alt: 'Cafe Bengaluru interior',
-              },
-            ].map((chapter, i) => (
+            {JOURNEY_CHAPTERS.map((chapter, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -32 }}
@@ -447,7 +419,7 @@ export default function AboutClient() {
           Our Story
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-8 py-16 md:py-24 relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-24 relative z-10">
 
           {/* Section header */}
           <motion.div
@@ -639,7 +611,7 @@ export default function AboutClient() {
             alignItems: 'center',
           }}
         >
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', width: '100%' }}>
+          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
             <p
               style={{
                 fontFamily: 'var(--font-jakarta), sans-serif',

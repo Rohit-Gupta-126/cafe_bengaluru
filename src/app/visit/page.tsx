@@ -7,7 +7,7 @@ export default function VisitPage() {
   return (
     <>
       {/* Main Content */}
-      <main className="flex-grow w-full max-w-[1600px] mx-auto px-6 md:px-gutter py-16 md:py-xl mt-24">
+      <main className="flex-grow w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl py-16 md:py-20 mt-24">
         <div className="flex flex-col md:flex-row gap-16 md:gap-xl xl:gap-24">
           {/* Left Column: Info */}
           <div className="w-full md:w-[40%] flex flex-col justify-center gap-lg">
@@ -53,9 +53,9 @@ export default function VisitPage() {
             </div>
           </div>
           {/* Right Column: Visuals */}
-          <div className="w-full md:w-[60%] relative min-h-[500px] flex items-center justify-center">
+          <div className="w-full md:w-[60%] relative">
             {/* Map Container */}
-            <div className="w-full h-[450px] md:h-full rounded-[24px] overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
+            <div className="w-full aspect-square md:aspect-[4/5] max-h-[500px] lg:max-h-[550px] rounded-[24px] overflow-hidden shadow-[0_8px_32px_rgba(74,46,27,0.08)] bg-surface-container border border-surface-variant relative z-10">
               <Image alt="Map location" fill className="object-cover" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 60vw" quality={85} />
             </div>
             {/* Overlapping Polaroid */}

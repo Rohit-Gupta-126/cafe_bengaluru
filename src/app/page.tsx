@@ -4,61 +4,7 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-
-const TIMELINE_EVENTS = [
-  {
-    id: 'morning',
-    time: '08:30 AM',
-    label: 'The Awakening',
-    title: 'Firing the Tawas & Roasting the Beans',
-    desc: 'The day begins in silence as the heavy cast-iron tawas are heated. The aroma of dark-roasted Chikmagalur beans spreads through the space, and the first slow drops of thick decoction fill the brass filters.',
-    image: '/images/vibe_coffee_beans.png',
-    sensory: {
-      aroma: 'Roasting coffee beans & warm ghee',
-      sound: 'The quiet drip of brass filters',
-      vibe: 'Misty, peaceful, and full of anticipation'
-    }
-  },
-  {
-    id: 'rush',
-    time: '11:00 AM',
-    label: 'The Breakfast Rush',
-    title: 'The Sizzle of Ghee & Golden Dosas',
-    desc: 'The kitchen is alive with activity. Clouds of steam rise from steaming idli pots, and ladlefuls of 14-hour fermented batter hit the tawas with a sharp hiss, crisped to a perfect golden podi crunch.',
-    image: '/images/podi_dosa.png',
-    sensory: {
-      aroma: 'Toasted curry leaves, mustard seeds, and hot sambar',
-      sound: 'The rhythmic scraping of spatulas on iron tawas',
-      vibe: 'Vibrant, fast-paced, and energetic'
-    }
-  },
-  {
-    id: 'kaapi',
-    time: '04:30 PM',
-    label: 'The Filter Coffee Hour',
-    title: 'The Art of the High-Altitude Pull',
-    desc: 'As the sun dips, the city gathers. Baristas pull filter coffee back and forth from soaring heights between brass dabarahs and tumblers, cooling the coffee and creating a rich, frothed velvet foam.',
-    image: '/images/barista_pour.png',
-    sensory: {
-      aroma: 'Sweet caramelized milk & frothed coffee foam',
-      sound: 'The metallic clatter and ring of brass dabarahs',
-      vibe: 'Social, relaxing, and filled with chatter'
-    }
-  },
-  {
-    id: 'supper',
-    time: '09:00 PM',
-    label: 'The Slow Supper',
-    title: 'Shared Plates & Warm Amber Lights',
-    desc: 'Under the warm amber glow of custom terracotta lights, long conversations linger. Plate-sized Thatte Idlis and warm Saffron Kesari Bath are shared slowly, bringing a comforting end to the day.',
-    image: '/images/vibe_friends.png',
-    sensory: {
-      aroma: 'Cardamom kesari pudding & earthy spices',
-      sound: 'Soft clinking of cutlery and gentle laughter',
-      vibe: 'Warm, intimate, and wabi-sabi cozy'
-    }
-  }
-];
+import { TIMELINE_EVENTS, CAROUSEL_ITEMS } from '@/data/home';
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -122,14 +68,7 @@ export default function Home() {
           className="absolute inset-x-0 bottom-0 pointer-events-none"
           aria-hidden="false"
         >
-          <div
-            className="pointer-events-auto"
-            style={{
-              maxWidth: 1200,
-              margin: '0 auto',
-              padding: '0 32px 80px',
-            }}
-          >
+          <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pb-20 pointer-events-auto">
             {/* Eye-brow tag */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -304,10 +243,10 @@ export default function Home() {
 
 
       {/* 2. FOUNDER'S NOTE */}
-      <section className="py-32 relative z-20 px-gutter w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto border-t border-outline-variant/20">
+      <section className="py-16 md:py-24 relative z-20 w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl border-t border-outline-variant/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-5 relative xl:col-span-4 2xl:col-span-4">
-            <motion.div style={{ y: founderImgY, rotate: founderRotate }} className="relative z-10 mask-arch-alt overflow-hidden aspect-[3/4] shadow-2xl hover-target">
+            <motion.div style={{ y: founderImgY, rotate: founderRotate }} className="relative z-10 mask-arch overflow-hidden aspect-[3/4] shadow-2xl hover-target">
               <div className="absolute inset-0 bg-tertiary-fixed-dim/20 mix-blend-multiply pointer-events-none z-10"></div>
               <Image src="/images/story_heritage.png" alt="Founders of Cafe Bengaluru" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" sizes="(max-width: 768px) 100vw, 40vw" quality={85} />
             </motion.div>
@@ -346,9 +285,9 @@ export default function Home() {
       </section>
 
       {/* 3. SENSORY EXPERIENCE (Bento Grid) */}
-      <section className="py-32 bg-surface-container-lowest relative">
+      <section className="py-16 md:py-24 bg-surface-container-lowest relative">
         <div className="absolute inset-0 kolam-faded opacity-30 pointer-events-none z-0"></div>
-        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -360,7 +299,7 @@ export default function Home() {
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] xl:auto-rows-[400px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[220px] md:auto-rows-[250px] lg:auto-rows-[280px] xl:auto-rows-[320px]">
             {/* Bento Box 1 */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -404,8 +343,8 @@ export default function Home() {
       </section>
 
       {/* 4. SIGNATURE MENU CAROUSEL */}
-      <section className="py-32 relative bg-surface" id="menu">
-        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter mb-12 flex justify-between items-end">
+      <section className="py-16 md:py-24 relative bg-surface" id="menu">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl mb-12 flex justify-between items-end">
           <motion.h2 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -419,21 +358,17 @@ export default function Home() {
           </Link>
         </div>
         
-        <div className="w-full overflow-hidden">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl overflow-hidden">
           <motion.div 
-            className="flex gap-8 px-gutter pb-16 overflow-x-auto hide-scrollbar snap-x snap-mandatory md:justify-center items-center"
+            className="flex gap-8 pb-16 overflow-x-auto hide-scrollbar snap-x snap-mandatory md:justify-center items-center"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {[
-              { img: '/images/podi_dosa.png', title: 'Ghee Podi Masala Dosa', price: '₹180', desc: 'Crispy, golden, loaded with spicy gun powder.' },
-              { img: '/images/thatte_idli.png', title: 'Ghee Thatte Idli', price: '₹120', desc: 'Thick, ultra-soft, drenched in ghee.' },
-              { img: '/images/mini_idlis.png', title: 'Mini Ghee Podi Idlis', price: '₹140', desc: 'Bite-sized perfection tossed in milagai podi.' },
-            ].map((item, i) => (
-              <div key={i} className="shrink-0 w-[85vw] md:w-[400px] xl:w-[480px] 2xl:w-[560px] snap-center group hover-target">
-                <div className="h-[450px] xl:h-[550px] 2xl:h-[650px] rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
+            {CAROUSEL_ITEMS.map((item, i) => (
+              <div key={i} className="shrink-0 w-[80vw] sm:w-[300px] md:w-[360px] lg:w-[400px] xl:w-[420px] snap-center group hover-target">
+                <div className="h-[300px] md:h-[360px] lg:h-[400px] xl:h-[440px] rounded-t-[3rem] rounded-b-md overflow-hidden relative mb-6 mask-arch">
                   <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 400px" quality={85} />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
@@ -449,11 +384,11 @@ export default function Home() {
       </section>
 
       {/* 5. A DAY AT NAMMA CAFE (Interactive Cinematic Timeline) */}
-      <section className="py-32 bg-[#FAF9F6] relative overflow-hidden" id="timeline">
+      <section className="py-16 md:py-24 bg-[#FAF9F6] relative overflow-hidden" id="timeline">
         <div className="absolute inset-0 bg-[#F5F0E8] opacity-60 z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(#2e5c31_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
 
-        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl relative z-10">
           <div className="max-w-2xl xl:max-w-4xl mx-auto mb-16 text-center">
             <span className="font-label-md text-label-md uppercase tracking-widest text-[#795741] mb-4 block font-semibold">
               The Sensory Timeline
@@ -587,11 +522,11 @@ export default function Home() {
       </section>
 
       {/* 6. TESTIMONIALS */}
-      <section className="py-32 bg-primary relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-primary relative overflow-hidden">
         <div className="absolute -left-20 top-0 w-64 h-64 bg-primary-container mask-leaf opacity-20 pointer-events-none"></div>
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-tertiary-fixed-dim/10 mask-blob opacity-40 pointer-events-none"></div>
         
-        <div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-gutter text-center relative z-10">
+        <div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-gutter md:px-lg lg:px-xl text-center relative z-10">
           <span className="material-symbols-outlined text-[64px] text-tertiary-fixed-dim mb-8">format_quote</span>
           
           <div className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory">
@@ -617,8 +552,8 @@ export default function Home() {
       </section>
 
       {/* 7. VISIT US */}
-      <section className="py-32 bg-background relative z-20" id="visit">
-        <div className="w-full max-w-screen-xl 2xl:max-w-[1600px] mx-auto px-gutter">
+      <section className="py-16 md:py-24 bg-background relative z-20" id="visit">
+        <div className="w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 xl:gap-32 items-center">
             
             <div className="flex flex-col justify-center">
@@ -652,7 +587,7 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="w-full aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 hover-target">
+              <div className="w-full aspect-square md:aspect-[4/5] max-h-[500px] lg:max-h-[550px] rounded-[3rem] overflow-hidden shadow-2xl relative z-10 hover-target">
                 <Image alt="Map location" fill className="object-cover transition-transform duration-1000 hover:scale-105" src="/images/map_location.png" sizes="(max-width: 768px) 100vw, 50vw" quality={85} />
               </div>
               <div className="absolute -bottom-12 -left-12 z-20 bg-surface p-4 pb-12 rounded-[1rem] shadow-xl transform -rotate-6 border border-surface-variant w-48 md:w-64 pointer-events-none">

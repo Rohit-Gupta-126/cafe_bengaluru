@@ -7,14 +7,14 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="flex-grow pt-[140px] pb-xl relative z-10 overflow-hidden">
+    <main className="flex-grow w-full max-w-[1600px] mx-auto px-gutter md:px-lg lg:px-xl pt-[140px] pb-16 relative z-10 overflow-hidden">
       <div className="fixed top-1/4 -right-20 opacity-10 pointer-events-none z-[-1] blur-[2px]">
         <svg height="200" viewBox="0 0 24 24" width="200" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#2E5C31"></path>
         </svg>
       </div>
 
-      <section className="max-w-container-max mx-auto px-gutter mb-xl relative z-10">
+      <section className="max-w-[1200px] mx-auto mb-16 relative z-10">
         <div className="mb-16 max-w-3xl">
           <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-sm mix-blend-multiply leading-tight">
             Come Say <span className="italic text-secondary">Hello.</span>
